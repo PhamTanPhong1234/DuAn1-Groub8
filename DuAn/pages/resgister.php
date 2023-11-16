@@ -133,7 +133,7 @@
         input {
             margin: 5px 20px;
             width: 90%;
-            height: 40px;
+            height: 25px;
             border-top: none;
             border-right: none;
             border-left: none;
@@ -156,6 +156,7 @@
             letter-spacing: 2px;
             margin-left: 20px;
             width: 91%;
+            height: 40px;
             background-color: rgba(0, 50, 51, 1);
             color: #fff;
             font-size: 1em;
@@ -210,18 +211,16 @@
             <div class="logo"><img src="../images/Logo.png" alt=""></div>
             <h1>Đăng ký</h1>
             <label for="username">Tên Tài Khoản</label>
-            <br>
+          
             <input type="text" id="username" name="username" required>
-            <br>
+        
             <label for="password">Mật Khẩu</label>
-            <br>
+
             <input type="password" id="password" name="password" required>
             <br>
             <label for="confirm">Nhập Lại Mật Khẩu</label>
-            <br>
             <input type="password" id="confirm" name="confirm" required>
             <br>
-            
             <label for="number">Số Điện Thoại</label>
             <br>
             <input type="text" id="number" name="number" required>
