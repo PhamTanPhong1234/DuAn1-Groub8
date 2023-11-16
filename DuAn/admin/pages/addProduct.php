@@ -80,7 +80,7 @@
         }
 
         li i {
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         a {
@@ -100,24 +100,126 @@
             height: 94vh;
             background-color: #F5F5F5;
         }
+
         /* css chung */
-        #main-content .add-product-title{
+        #main-content .add-product-title {
             width: 70vw;
             height: 90vh;
             background-color: white;
             margin-top: 10px;
-            margin-left:  auto;
-            margin-right:  auto;
-            margin-bottom:  auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: auto;
             border-radius: 7px;
             box-shadow: 2px 2px 2px 2px #ccc;
             padding: 0 10px;
         }
-        #main-content .add-product-title .main-title{
+
+        #main-content .add-product-title .main-title {
             width: 100%;
             padding: 10px;
             border-bottom: 1px solid #FFD33A;
-            
+        }
+
+        form {
+            width: 90%;
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 33.33% 33.33% 33.33%;
+        }
+
+        form div {
+            width: 100%;
+        }
+
+        input[type="text"] {
+            width: 95%;
+            height: 40px;
+            margin: 1em 0;
+            font-size: 1em;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-bottom: 2px solid #23AD4A;
+        }
+
+        label,
+        span {
+            font-weight: 600;
+
+        }
+
+        span {
+
+            font-size: 10px;
+        }
+
+        #file {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .upload {
+            grid-row: 2/3;
+        }
+
+        .upload-img {
+            border-radius: 10px;
+            padding: 10px 40px;
+            background-color: rgba(0, 45, 51, 1);
+            color: white;
+        }
+
+        .submit {
+            grid-column: 3/3;
+
+        }
+
+        #submit {
+            float: right;
+            margin-top: 30px;
+            margin-right: 10px;
+            width: 100px;
+            height: 3em;
+            border-radius: 10px;
+            font-weight: 700;
+            color: white;
+            border: 2px solid #23AD4A;
+            background-color: #23AD4A;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        #submit:hover {
+            background-color: transparent;
+            color: #23AD4A;
+        }
+
+        .logout {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background-color: rebeccapurple;
+            text-align: center;
+            cursor: pointer;
+            background-color: #FFD33A;
+        }
+        .logout a{
+            color: #000;
+            line-height: 30px;
         }
     </style>
 </head>
@@ -143,27 +245,52 @@
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
         <div class="add-product-title">
-            <div class="main-title"><h3>Thêm Sản Phẩm</h3></div>
+            <div class="main-title">
+                <h3>Thêm Sản Phẩm</h3>
+            </div>
+            <form action="">
+                <div>
+                    <label for="Id">Mã Món</label>
+                    <br>
+                    <input type="text" name="id" id="id">
+                </div>
+                <div>
+                    <label for="name">Tên Món</label>
+                    <br>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="price">Giá Tiền</label>
+                    <br>
+                    <input type="text" name="price" id="price">
+                </div>
+                <div>
+                    <label for="quantity">Số Lượng</label>
+                    <br>
+                    <input type="text" name="quantity" id="quantity">
+                </div>
+                <div>
+                    <label for="cost">Nguyên Liệu</label>
+                    <br>
+                    <input type="text" name="cost" id="cost">
+                </div>
+                <div class="upload">
+                    <div class="contain"> <Span>Tải Ảnh Sản Phẩm (4x3)</Span><br><br>
+                        <label class="upload-img" for="file"><i class="fa-solid fa-upload"></i></label>
+                        <br>
+                        <input type="file" name="file" id="file">
+                    </div>
+                </div>
+                <div class="submit">
+                    <input type="submit" id="submit" value="Nhập">
+                </div>
+            </form>
         </div>
-        <form action="">
-            <div></div>
-        </form>
-
         <!-- có thể thay đổi nội dung -->
+    </div>
+    <div class="logout">
+        <a href=""> <i class="fa-solid fa-right-from-bracket"></i></a>
     </div>
 </body>
 
 </html>
-<!-- <form action="process_product.php" method="post">
-        <h2>Add Product</h2>
-        <label for="productName">Product Name:</label>
-        <input type="text" id="productName" name="productName" required>
-
-        <label for="productPrice">Product Price:</label>
-        <input type="number" id="productPrice" name="productPrice" required>
-
-        <label for="productImage">Product Image URL:</label>
-        <input type="url" id="productImage" name="productImage" required>
-
-        <button type="submit">Add Product</button>
-    </form> -->
