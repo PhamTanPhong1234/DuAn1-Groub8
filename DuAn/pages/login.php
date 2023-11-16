@@ -86,11 +86,7 @@
                 text-align: center;
             }
 
-            label {
-                font-size: 1em;
-                font-weight: 300;
-                margin: 20px 20px;
-            }
+
 
             input {
                 margin: 15px 20px;
@@ -131,6 +127,11 @@
                 border: 2px solid #cdcdcd;
 
             }
+            ::placeholder{
+                color: white;
+                font-weight: 300;
+                
+            }
 
             h4 {
                 width: 100%;
@@ -159,6 +160,7 @@
             .home:hover{
                 text-decoration: underline;
             }
+            
         </style>
     </head>
 
@@ -170,13 +172,13 @@
             <form action="login.php" method="post">
                 <div class="logo"><img src="../images/Logo.png" alt=""></div>
                 <h1>Đăng Nhập</h1>
-                <label for="username">Tên Tài Khoản</label>
+                
+                
+                <input type="text" id="username" name="username" required placeholder="Tên Tài Khoản">
                 <br>
-                <input type="text" id="username" name="username" required>
-                <br>
-                <label for="password">Mật Khẩu</label>
-                <br>
-                <input type="password" id="password" name="password" required>
+            
+                
+                <input type="password" id="password" name="password" required placeholder="Mật Khẩu">
                 <br>
                 <input type="submit" value="Đăng Nhập">
                 <br>

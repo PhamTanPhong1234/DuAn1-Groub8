@@ -136,28 +136,29 @@
 
         input[type="text"] {
             width: 95%;
+            padding-left: 10px;
             height: 40px;
             margin: 1em 0;
             font-size: 1em;
-            border-top: none;
-            border-left: none;
-            border-right: none;
+            border-radius: 5px;
+            border: 2px solid #000;
             transition: 0.3s;
         }
 
         input[type="text"]:focus {
             outline: none;
-            border-bottom: 2px solid #23AD4A;
+            border-radius: 5px;
+            border: 2px solid #23AD4A;
         }
 
-        label,
+        label {
+            font-weight: 600;
+            font-size: 13px;
+
+        }
+
         span {
             font-weight: 600;
-
-        }
-
-        span {
-
             font-size: 10px;
         }
 
@@ -188,7 +189,7 @@
 
         #submit {
             float: right;
-            margin-top: 30px;
+            margin-top: 15px;
             margin-right: 10px;
             width: 100px;
             height: 3em;
@@ -217,7 +218,8 @@
             cursor: pointer;
             background-color: #FFD33A;
         }
-        .logout a{
+
+        .logout a {
             color: #000;
             line-height: 30px;
         }

@@ -78,10 +78,10 @@
         body {
             font-family: Open Sans;
             background: url('../images/Rhythms-Restaurant4.jpg') center center no-repeat;
-            background-size: 100%;  
+            background-size: 100%;
             margin: 0;
             height: 100vh;
-        }       
+        }
 
         .container {
             background-color: #fff;
@@ -93,7 +93,7 @@
             width: 50%;
             float: right;
             width: 80%;
-        }   
+        }
 
 
 
@@ -124,14 +124,10 @@
             text-align: center;
         }
 
-        label {
-            font-size: 1em;
-            font-weight: 300;
-            margin: 5px 20px;
-        }
 
         input {
-            margin: 5px 20px;
+            margin: 10px 20px;
+            padding-bottom: 5px;
             width: 90%;
             height: 25px;
             border-top: none;
@@ -166,12 +162,16 @@
             transition: 0.3s;
         }
 
-        input[type="submit"]:hover  {
+        input[type="submit"]:hover {
             background: none;
             border: 2px solid #cdcdcd;
 
         }
-
+        ::placeholder{
+            font-size: 12px;
+                color: white;
+                font-weight: 200;
+            }
         h4 {
             width: 100%;
             text-align: center;
@@ -187,16 +187,19 @@
         .back {
             width: 20%;
         }
+
         .home {
             color: #fff;
             font-size: 12px;
             text-decoration: none;
             padding: 10px;
         }
-        .home i{
-            margin-left:10px ;
+
+        .home i {
+            margin-left: 10px;
         }
-        .home:hover{
+
+        .home:hover {
             text-decoration: underline;
         }
     </style>
@@ -210,24 +213,17 @@
         <form action="login.php" method="post">
             <div class="logo"><img src="../images/Logo.png" alt=""></div>
             <h1>Đăng ký</h1>
-            <label for="username">Tên Tài Khoản</label>
-          
-            <input type="text" id="username" name="username" required>
-        
-            <label for="password">Mật Khẩu</label>
 
-            <input type="password" id="password" name="password" required>
+            <input type="text" id="username" name="username" required placeholder="Tên Tài Khoản">
+            <input type="password" id="password" name="password" required placeholder="Mật Khẩu">
             <br>
-            <label for="confirm">Nhập Lại Mật Khẩu</label>
-            <input type="password" id="confirm" name="confirm" required>
+            <input type="password" id="confirm" name="confirm" required placeholder="Nhập Lại Mật Khẩu">
             <br>
-            <label for="number">Số Điện Thoại</label>
+    
+            <input type="text" id="number" name="number" required placeholder="Số Điện Thoại">
             <br>
-            <input type="text" id="number" name="number" required>
-            <br>  
-            <label for="email">Email</label>
-            <br>        
-            <input type="email" id="email" name="email" required>
+
+            <input type="email" id="email" name="email" required placeholder="Email">
             <br>
             <input type="submit" value="Đăng Ký">
             <br>
@@ -237,4 +233,4 @@
     </div>
 </body>
 
-</html> 
+</html>
