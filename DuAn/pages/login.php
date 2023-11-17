@@ -128,9 +128,9 @@
 
             }
             ::placeholder{
+            font-size: 12px;
                 color: white;
-                font-weight: 300;
-                
+                font-weight: 200;
             }
 
             h4 {
