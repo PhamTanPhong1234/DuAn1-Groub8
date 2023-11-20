@@ -6,7 +6,6 @@
 </section>
 <div class="section-block section_event news__module news__module-booking section-service bg-green-dark ">
     <div class="container-fluid">
-
         <div class="row m-0">
             <div class="col-xl-4 col-lg-12">
                 <div class="news__module-booking-text">
@@ -21,176 +20,149 @@
                 </div>
             </div>
             <div class="col-xl-8 col-lg-12">
-                <div class="news__module-booking-slider bg-yellow">
-                    <div class="owl-carousel" data-nav="true" data-xss-items="1" data-xs-items="2" data-sm-items="3" data-md-items="3" data-lg-items="3" data-lgg-items="3" data-loop="true" data-margin="10">
-                        <div class="item item-booking">
-                            <div class="item_wrap_blog">
-                                <div class="item-blg blog-large">
-                                    <div class="blog-inner">
-                                        <a class="banner" href="javascript:void(0)" title="TIỆC BÁO HỶ - 40PAX">
-                                            <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="TIỆC BÁO HỶ - 40PAX" width="500" height="274" />
-                                            <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
-                                        </a>
-                                        <hr>
-                                        <div class="content__">
-                                            <h3 class="h4">
-                                                <a class="text2line ellipsis-2" title="TIỆC BÁO HỶ - 40PAX" href="javascript:void(0)">TIỆC BÁO HỶ - 40PAX</a>
-                                            </h3>
-                                            <p class="time_post f mb-0">
-                                                <span>11:00 - 11:00, </span>
-                                                <span>11/11/2023</span>
-                                            </p>
-                                            <p class="event-operated event-operated-bizman">
-                                                Operated by Bizman Sky </p>
-                                            <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
-                                        </div>
+                <div class="news__module-booking-slider " style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                    <div class="item item-booking">
+                        <div class="item_wrap_blog">
+                            <div class="item-blg blog-large">
+                                <div class="blog-inner">
+                                    <a class="banner" href="javascript:void(0)" title="Ton Duc Thang University Event - 100 PAX">
+                                        <img src="https://bizmansky.vn/image/cache/catalog/318193362_557441875802705_8098443585346848480_n-500x274.jpg" class="img-responsive basic img-auto" alt="Ton Duc Thang University Event - 100 PAX" width="500" height="274" />
+                                        <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
+                                    </a>
+                                    <hr>
+                                    <div class="content__">
+                                        <h3 class="h4">
+                                            <a class="text2line ellipsis-2" title="Ton Duc Thang University Event - 100 PAX" href="javascript:void(0)">Ton Duc Thang University Event - 100 PAX</a>
+                                        </h3>
+                                        <p class="time_post f mb-0">
+                                            <span>17:00 - 17:00, </span>
+                                            <span>11/11/2023</span>
+                                        </p>
+                                        <p class="event-operated event-operated-bizman">
+                                            Operated by Bizman Sky </p>
+                                        <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item item-booking">
-                            <div class="item_wrap_blog">
-                                <div class="item-blg blog-large">
-                                    <div class="blog-inner">
-                                        <a class="banner" href="javascript:void(0)" title="Ton Duc Thang University Event - 100 PAX">
-                                            <img src="https://bizmansky.vn/image/cache/catalog/318193362_557441875802705_8098443585346848480_n-500x274.jpg" class="img-responsive basic img-auto" alt="Ton Duc Thang University Event - 100 PAX" width="500" height="274" />
-                                            <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
-                                        </a>
-                                        <hr>
-                                        <div class="content__">
-                                            <h3 class="h4">
-                                                <a class="text2line ellipsis-2" title="Ton Duc Thang University Event - 100 PAX" href="javascript:void(0)">Ton Duc Thang University Event - 100 PAX</a>
-                                            </h3>
-                                            <p class="time_post f mb-0">
-                                                <span>17:00 - 17:00, </span>
-                                                <span>11/11/2023</span>
-                                            </p>
-                                            <p class="event-operated event-operated-bizman">
-                                                Operated by Bizman Sky </p>
-                                            <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
-                                        </div>
+                    </div>
+                    <div class="item item-booking bg-yellow ">
+                        <div class="item_wrap_blog">
+                            <div class="item-blg blog-large ">
+                                <div class="blog-inner">
+                                    <a class="banner" href="" title="WORKSHOP SHARING COMUNITY - 40 PAX">
+                                        <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="WORKSHOP - 40 PAX" width="500" height="274" />
+                                        <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
+                                    </a>
+                                    <hr>
+                                    <div class="content__">
+                                        <h3 class="h4">
+                                            <a class="text2line ellipsis-2" title="WORKSHOP - 40 PAX" href="javascript:void(0)">WORKSHOP - 40 PAX</a>
+                                        </h3>
+                                        <p class="time_post f mb-0">
+                                            <span>13/11/2023</span>
+                                        </p>
+                                        <p class="event-operated event-operated-bizman">
+                                            Operated by Bizman Sky </p>
+                                        <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item item-booking">
-                            <div class="item_wrap_blog">
-                                <div class="item-blg blog-large">
-                                    <div class="blog-inner">
-                                        <a class="banner" href="javascript:void(0)" title="WORKSHOP - 40 PAX">
-                                            <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="WORKSHOP - 40 PAX" width="500" height="274" />
-                                            <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
-                                        </a>
-                                        <hr>
-                                        <div class="content__">
-                                            <h3 class="h4">
-                                                <a class="text2line ellipsis-2" title="WORKSHOP - 40 PAX" href="javascript:void(0)">WORKSHOP - 40 PAX</a>
-                                            </h3>
-                                            <p class="time_post f mb-0">
-                                                <span>13/11/2023</span>
-                                            </p>
-                                            <p class="event-operated event-operated-bizman">
-                                                Operated by Bizman Sky </p>
-                                            <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
-                                        </div>
+                    </div>
+                    <div class="item item-booking">
+                        <div class="item_wrap_blog">
+                            <div class="item-blg blog-large">
+                                <div class="blog-inner">
+                                    <a class="banner" href="javascript:void(0)" title="TIỆC CÔNG TY - 20 PAX">
+                                        <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="TIỆC CÔNG TY - 20 PAX" width="500" height="274" />
+                                        <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
+                                    </a>
+                                    <hr>
+                                    <div class="content__">
+                                        <h3 class="h4">
+                                            <a class="text2line ellipsis-2" title="TIỆC CÔNG TY - 20 PAX" href="javascript:void(0)">TIỆC CÔNG TY - 20 PAX</a>
+                                        </h3>
+                                        <p class="time_post f mb-0">
+                                            <span>16/11/2023</span>
+                                        </p>
+                                        <p class="event-operated event-operated-bizman">
+                                            Operated by Bizman Sky </p>
+                                        <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item item-booking">
-                            <div class="item_wrap_blog">
-                                <div class="item-blg blog-large">
-                                    <div class="blog-inner">
-                                        <a class="banner" href="javascript:void(0)" title="TIỆC CÔNG TY - 20 PAX">
-                                            <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="TIỆC CÔNG TY - 20 PAX" width="500" height="274" />
-                                            <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
-                                        </a>
-                                        <hr>
-                                        <div class="content__">
-                                            <h3 class="h4">
-                                                <a class="text2line ellipsis-2" title="TIỆC CÔNG TY - 20 PAX" href="javascript:void(0)">TIỆC CÔNG TY - 20 PAX</a>
-                                            </h3>
-                                            <p class="time_post f mb-0">
-                                                <span>16/11/2023</span>
-                                            </p>
-                                            <p class="event-operated event-operated-bizman">
-                                                Operated by Bizman Sky </p>
-                                            <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
-                                        </div>
+                    </div>
+                    <div class="item item-booking">
+                        <div class="item_wrap_blog">
+                            <div class="item-blg blog-large">
+                                <div class="blog-inner">
+                                    <a class="banner" href="javascript:void(0)" title="TIỆC CÔNG TY - 30 PAX">
+                                        <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="TIỆC CÔNG TY - 30 PAX" width="500" height="274" />
+                                        <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
+                                    </a>
+                                    <hr>
+                                    <div class="content__">
+                                        <h3 class="h4">
+                                            <a class="text2line ellipsis-2" title="TIỆC CÔNG TY - 30 PAX" href="javascript:void(0)">TIỆC CÔNG TY - 30 PAX</a>
+                                        </h3>
+                                        <p class="time_post f mb-0">
+                                            <span>24/11/2023</span>
+                                        </p>
+                                        <p class="event-operated event-operated-bizman">
+                                            Operated by Bizman Sky </p>
+                                        <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item item-booking">
-                            <div class="item_wrap_blog">
-                                <div class="item-blg blog-large">
-                                    <div class="blog-inner">
-                                        <a class="banner" href="javascript:void(0)" title="TIỆC CÔNG TY - 30 PAX">
-                                            <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="TIỆC CÔNG TY - 30 PAX" width="500" height="274" />
-                                            <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
-                                        </a>
-                                        <hr>
-                                        <div class="content__">
-                                            <h3 class="h4">
-                                                <a class="text2line ellipsis-2" title="TIỆC CÔNG TY - 30 PAX" href="javascript:void(0)">TIỆC CÔNG TY - 30 PAX</a>
-                                            </h3>
-                                            <p class="time_post f mb-0">
-                                                <span>24/11/2023</span>
-                                            </p>
-                                            <p class="event-operated event-operated-bizman">
-                                                Operated by Bizman Sky </p>
-                                            <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
-                                        </div>
+                    </div>
+                    <div class="item item-booking">
+                        <div class="item_wrap_blog">
+                            <div class="item-blg blog-large">
+                                <div class="blog-inner">
+                                    <a class="banner" href="javascript:void(0)" title="Customer Appreciation - 60 PAX">
+                                        <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="Customer Appreciation - 60 PAX" width="500" height="274" />
+                                        <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
+                                    </a>
+                                    <hr>
+                                    <div class="content__">
+                                        <h3 class="h4">
+                                            <a class="text2line ellipsis-2" title="Customer Appreciation - 60 PAX" href="javascript:void(0)">Customer Appreciation - 60 PAX</a>
+                                        </h3>
+                                        <p class="time_post f mb-0">
+                                            <span>08:00 - 08:00, </span>
+                                            <span>14/01/2024</span>
+                                        </p>
+                                        <p class="event-operated event-operated-bizman">
+                                            Operated by Bizman Sky </p>
+                                        <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item item-booking">
-                            <div class="item_wrap_blog">
-                                <div class="item-blg blog-large">
-                                    <div class="blog-inner">
-                                        <a class="banner" href="javascript:void(0)" title="Customer Appreciation - 60 PAX">
-                                            <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="Customer Appreciation - 60 PAX" width="500" height="274" />
-                                            <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
-                                        </a>
-                                        <hr>
-                                        <div class="content__">
-                                            <h3 class="h4">
-                                                <a class="text2line ellipsis-2" title="Customer Appreciation - 60 PAX" href="javascript:void(0)">Customer Appreciation - 60 PAX</a>
-                                            </h3>
-                                            <p class="time_post f mb-0">
-                                                <span>08:00 - 08:00, </span>
-                                                <span>14/01/2024</span>
-                                            </p>
-                                            <p class="event-operated event-operated-bizman">
-                                                Operated by Bizman Sky </p>
-                                            <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item item-booking">
-                            <div class="item_wrap_blog">
-                                <div class="item-blg blog-large">
-                                    <div class="blog-inner">
-                                        <a class="banner" href="javascript:void(0)" title="HAVE LUNCH WITH PARTNER - 25 PAX">
-                                            <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="HAVE LUNCH WITH PARTNER - 25 PAX" width="500" height="274" />
-                                            <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
-                                        </a>
-                                        <hr>
-                                        <div class="content__">
-                                            <h3 class="h4">
-                                                <a class="text2line ellipsis-2" title="HAVE LUNCH WITH PARTNER - 25 PAX" href="javascript:void(0)">HAVE LUNCH WITH PARTNER - 25 PAX</a>
-                                            </h3>
-                                            <p class="time_post f mb-0">
-                                                <span>23:30 - 23:30, </span>
-                                                <span>14/01/2024</span>
-                                            </p>
-                                            <p class="event-operated event-operated-bizman">
-                                                Operated by Bizman Sky </p>
-                                            <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
-                                        </div>
+                    </div>
+                    <div class="item item-booking">
+                        <div class="item_wrap_blog">
+                            <div class="item-blg blog-large">
+                                <div class="blog-inner">
+                                    <a class="banner" href="javascript:void(0)" title="HAVE LUNCH WITH PARTNER - 25 PAX">
+                                        <img src="https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg" class="img-responsive basic img-auto" alt="HAVE LUNCH WITH PARTNER - 25 PAX" width="500" height="274" />
+                                        <img class="news__module-icon" src="catalog/view/theme/bizman/image/icon/Recommended.png" width="42" height="46" />
+                                    </a>
+                                    <hr>
+                                    <div class="content__">
+                                        <h3 class="h4">
+                                            <a class="text2line ellipsis-2" title="HAVE LUNCH WITH PARTNER - 25 PAX" href="javascript:void(0)">HAVE LUNCH WITH PARTNER - 25 PAX</a>
+                                        </h3>
+                                        <p class="time_post f mb-0">
+                                            <span>23:30 - 23:30, </span>
+                                            <span>14/01/2024</span>
+                                        </p>
+                                        <p class="event-operated event-operated-bizman">
+                                            Operated by Bizman Sky </p>
+                                        <a onclick="$('html, body').animate({scrollTop: $('#home_newsletter').offset().top}, 500);" class="bizman-button w-100 text-center">Book a table</a>
                                     </div>
                                 </div>
                             </div>
@@ -200,6 +172,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 <div class="content_maintop_two">
     <section class="section-block awe-section-1 section_category category_custom p-0 bg-green" id="category_custom--1">
@@ -870,8 +844,8 @@
             <div class="row">
                 <div class="col-xl-6">
                     <div class="section-service__video">
-                        <a data-autoplay="true" data-vbtype="video" href="https://youtu.be/8_5KfufpUaQ" class="venobox">
-                            <!-- <img src="https://bizmansky.vn/image/cache/catalog/background/Screenshot_1-640x360.png" alt="image Welcome to Bizman Sky" class="w-100" width="640" height="360" /> -->
+                        <a data-autoplay="true" data-vbtype="video" href="https://www.youtube.com/watch?v=JHNMIXNua_0" class="venobox">
+                            <img src="../images/imager_11_20248_700.jpg" alt="image Welcome to Bizman Sky" class="w-100" width="640" height="360" />
                             <i class="fa fa-play-circle"></i>
                         </a>
                     </div>
@@ -926,23 +900,23 @@
     <span>Follow us:</span>
     <ul class="list-inline">
         <li>
-            <a href="https://www.facebook.com/bizmansky.saigon" target="_blank">
-                <img src="catalog/view/theme/bizman/image/icon/facebook.svg" />
+            <a href="#" target="_blank">
+                <img src="./images/fb.png" />
             </a>
         </li>
         <li>
-            <a href="https://www.instagram.com/bizmansky.saigon/" target="_blank">
-                <img src="catalog/view/theme/bizman/image/icon/Instagram.svg" />
+            <a href="#" target="_blank">
+                <img src="./images/ins.png" />
             </a>
         </li>
         <li>
-            <a href="https://www.youtube.com/@bizmansky" target="_blank">
-                <img src="catalog/view/theme/bizman/image/icon/youtube.svg" />
+            <a href="#" target="_blank">
+                <img src="./images/youtube.png" />
             </a>
         </li>
         <li>
-            <a href="https://www.tripadvisor.com.vn/Restaurant_Review-g293925-d25105387-Reviews-Bizman_Sky-Ho_Chi_Minh_City.html?m=19905" target="_blank">
-                <img src="catalog/view/theme/bizman/image/icon/tripadvisor.svg" />
+            <a href="#" target="_blank">
+                <img src="./images/tri.png" />
             </a>
         </li>
     </ul>
