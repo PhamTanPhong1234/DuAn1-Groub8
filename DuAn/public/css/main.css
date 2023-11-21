@@ -126,25 +126,16 @@
   background-image: url(https://bizmansky.vn/catalog/view/theme/bizman/image/background/Pattern.png);
 }
 .view-more{
-  font-size:20px;
+  margin-top: 20px;
+  float: left;
+  font-size:1em;
   font-weight: 800;
-  position: relative;
-  padding-left:70px;
   text-transform: uppercase;
 }
 .view-more:hover{
   color:#CC9902 !important
 }
-.view-more::before {
-  content: "";
-  display: block;
-  height: 1px;
-  width: 50px;
-  top: 50%;
-  background: #fff;
-  margin-top: -0.5px;
-  position:absolute;
-}
+
 .social ul{
   margin:0;
   padding:0;
@@ -156,6 +147,7 @@
 .item-des{
   font-weight: 500;
   letter-spacing: 0.02em;
+  margin-bottom: 110px;
 }
 @media (min-width:1200px){
   .item-des{

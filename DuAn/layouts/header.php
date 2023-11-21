@@ -7,9 +7,7 @@
     <title>Bizman Sky - An amazingly welcome space for business profressionals</title>
     <link href="https://bizmansky.vn/image/catalog/logo/logo-fav.png" rel="icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
+    <script src="https://kit.fontawesome.com/c13a07f3cd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./public/css/bootstrap.min.css">
     <link rel="stylesheet" href="./public/css/owl.carousel.min.css">
     <link rel="stylesheet" href="./public/css/venobox.min.css">
@@ -23,6 +21,10 @@
             padding: 140px 0;
             margin-top: 95px;
         }
+       .header-login-cart a i:hover{
+        color: #CC9902;
+        
+       }
     </style>
 
 
@@ -75,30 +77,17 @@
                         <div class="header__social social">
                             <span>Follow us:</span>
                             <ul>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="" target="_blank">
-                                        <img src="./images/ins.png" width="18" height="18" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <img src="./images/youtube.png" width="18" height="18" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <img src="./images/tri.png" width="18" height="18" />
-                                    </a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
                     <div class="header__language">
+                        <div class="header-login-cart" style="width: 100%; height:30px ; display: grid;grid-template-columns: 1fr 1fr; gap:15px;">
+                            <a class="" style="color: #fff;" href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a class="" style="color: #fff;" href=""><i class="fa-solid fa-user"></i></a>
+
+                        </div>
+
                         <div class="language">
                             <form action="https://bizmansky.vn/common/language/language" method="post" enctype="multipart/form-data" id="form-language" class="form-language">
                                 <ul>
