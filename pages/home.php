@@ -847,6 +847,7 @@
                         <a data-autoplay="true" data-vbtype="video" href="https://www.youtube.com/watch?v=JHNMIXNua_0" class="venobox">
                             <img src="./images/imager_11_20248_700.jpg" alt="image Welcome to Hangug" class="w-100" width="640" height="360" />
                             <i class="fa fa-play-circle"></i>
+                            
                         </a>
                     </div>
                 </div>
