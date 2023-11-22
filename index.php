@@ -32,6 +32,7 @@ include "./config/connect.php";
         case 'booking_contact':
             include './pages/booking_contact.php';
             break;    
+            
         default:
             include './pages/home.php';
             break;
