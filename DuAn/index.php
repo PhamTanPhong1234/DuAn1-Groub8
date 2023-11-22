@@ -39,4 +39,4 @@ include "./config/connect.php";
 ?>
 
 
-<?php include './layouts/footer.php' ?>
+<?php /* include './layouts/footer.php' */ ?>

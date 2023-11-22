@@ -1,28 +1,28 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "duan";
+    // $servername = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $dbname = "duan";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    // $conn = new mysqli($servername, $username, $password, $dbname);
 
-    if ($conn->connect_error) {
-        die("Kết nối không thành công: " . $conn->connect_error);
-    }
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    // if ($conn->connect_error) {
+    //     die("Kết nối không thành công: " . $conn->connect_error);
+    // }
+    // $username = $_POST["username"];
+    // $password = $_POST["password"];
 
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = $conn->query($sql);
+    // $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    // $result = $conn->query($sql);
 
-    // Kiểm tra kết quả truy vấn
-    if ($result->num_rows > 0) {
-        header("Location: ../index.php");
-    } else {
-        echo "Tên đăng nhập hoặc mật khẩu không đúng.";
-    }
+    // // Kiểm tra kết quả truy vấn
+    // if ($result->num_rows > 0) {
+    //     header("Location: ../index.php");
+    // } else {
+    //     echo "Tên đăng nhập hoặc mật khẩu không đúng.";
+    // }
 
-    $conn->close();
+    // $conn->close();
     ?>
 
     <!DOCTYPE html>
@@ -39,8 +39,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../icon/themify-icons/themify-icons.css">
-        
-   
         <style>
             body {
                 font-family: Open Sans;
@@ -77,7 +75,7 @@
             }
 
             img {
-                width: 70%;
+                width: 65%;
 
             }
 
@@ -173,7 +171,7 @@
         </a>
         <div class="container">
             <form action="login.php" method="post">
-                <div class="logo"><img src="../images/Logo.png" alt=""></div>
+                <div class="logo"><img src="../images/Logohome.png" alt=""></div>
                 <h1>Đăng Nhập</h1>
                 
                 

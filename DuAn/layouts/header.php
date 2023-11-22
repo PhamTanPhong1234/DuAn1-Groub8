@@ -37,7 +37,7 @@
                 <div class="col-xl-2 col-lg-3 header__mobile">
                     <div class="header__logo">
                         <a href="/duan/index.php?action=home">
-                            <img class="header__logo-main" src="https://bizmansky.vn/image/catalog/logo/Logo.png" width="247" height="31" />
+                            <img class="header__logo-main" src="./images/Logohome.png" width="247" height="31" />
                         </a>
                     </div>
                     <button type="button" class="nav-line-group d-block d-lg-none">
