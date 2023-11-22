@@ -1,0 +1,14 @@
+.section-gallery .section-gallery__item{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+}
+.section-gallery .owl-nav button{
+    color:#fff;
+    font-size:30px;
+}
+.section-gallery iframe{
+    width:100%;
+}
