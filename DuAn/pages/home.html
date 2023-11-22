@@ -35,14 +35,14 @@
             height: 100%;
             color: #fff;
             float: left;
-            
+
         }
 
         .event-title-container h1 {
             width: 60%;
-            font-size: 60px;
+            font-size: 70px;
             letter-spacing: -2px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .event-title-container p {
@@ -61,14 +61,37 @@
             font-size: 25px;
             transition: 0.3s;
         }
-        .event-title-container .show-btn:hover{
-            color:#CC9902;
+
+        .event-title-container .show-btn:hover {
+            color: #CC9902;
         }
-        .home-slide-event{
+
+        .home-slide-event {
             float: right;
+            position: relative;
             width: 60%;
-            height:70vh;
-            background-color:#CC9902 ;
+            height: 70vh;
+            background-color: #CC9902;
+
+        }
+
+        .home-slide-event button {
+            position: absolute;
+            width: 40px;
+            height: 70px;
+            font-size: 1.5em;
+            background-color: rgb(245,235,204);
+            border: none;
+        }
+
+        .home-slide-event .prev {
+            top: 45%;
+            left: 0;
+        }
+
+        .home-slide-event .next {
+            top: 45%;
+            right: 0;
         }
     </style>
 </head>
@@ -82,15 +105,18 @@
         <div class="home-event-wrap">
             <div class="event-title-container">
                 <h1>EVENT AND SHOW</h1><br>
-                <p>Exciting events & shows at Bizman Sky - Chic & sophisticated rooftop space with breath-taking, panoramic
+                <p>Exciting events & shows at Bizman Sky - Chic & sophisticated rooftop space with breath-taking,
+                    panoramic
                     city views. And Enjoying live musical performances by “Sky Jazz” to create a relaxed atmosphere and
                     comfortable environment.</p><br>
-                <button class="show-btn"><i class="fa-solid fa-minus"></i>&nbsp&nbsp VIEW FULL CALENDAR OF EVENT</button>
+                <button class="show-btn"><i class="fa-solid fa-minus"></i>&nbsp&nbsp VIEW FULL CALENDAR OF
+                    EVENT</button>
             </div>
             <div class="home-slide-event">
-
+                <button class="prev"><i class="fa-solid fa-angle-left"></i></button>
+                <button class="next"><i class="fa-solid fa-angle-right"></i></button>
             </div>
-            
+
         </div>
     </div>
 </body>
