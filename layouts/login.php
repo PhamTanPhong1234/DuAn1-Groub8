@@ -181,12 +181,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
 
     <body>
-        <a class="home" href="../index.php"><i class="ti-arrow-left"></i>
+        <a class="home" href="./layouts/home.php"><i class="ti-arrow-left"></i>
             Quay Lại Trang Chủ
         </a>
         <div class="container">
             <form action="login.php" method="post">
-                <div class="logo"><img src="../images/Logohanquoc.png" alt=""></div>
+                <div class="logo"><img src="../images/logoduan.png" alt=""></div>
                 <h1>Đăng Nhập</h1>
                 
                 
