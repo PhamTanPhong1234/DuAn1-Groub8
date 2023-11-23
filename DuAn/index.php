@@ -33,7 +33,7 @@ include "./config/connect.php";
             include './pages/booking_contact.php';
             break;    
         default:
-            include './pages/home.php';
+            include './pages/home.html';
             break;
     }
 ?>
