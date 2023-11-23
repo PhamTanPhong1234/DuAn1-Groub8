@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/c13a07f3cd.js" crossorigin="anonymous"></script>
@@ -28,11 +28,16 @@
             background-image: url('https://bizmansky.vn/catalog/view/theme/bizman/image/background/Pattern.png');
         }
 
+        .home-event-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .home-event-show .event-title-container {
             width: 40%;
-            padding-top: 5%;
-            padding-left: 3%;
-            padding-right: 3% ;
+            padding-left: 2%;
+            padding-right: 20px;
             height: 100%;
             color: #fff;
             float: left;
@@ -43,7 +48,7 @@
             width: 80%;
             line-height: 1em;
             font-size: 70px;
-            letter-spacing: -px;
+            letter-spacing: -2px;
             font-weight: 800;
         }
 
@@ -117,13 +122,14 @@
             height: 100%;
             width: 100%;
             margin: 0 auto;
-            padding-left: 5%;
+            padding: 0 5%;
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: space-around;
         }
 
         .home-slide-event .event-slider .slider-box {
+            position: relative;
             width: 30%;
             height: 90%;
             color: #fff;
@@ -143,20 +149,165 @@
             overflow: hidden;
             background: url('https://bizmansky.vn/image/cache/catalog/340500372_445193644475401_2173054832202182465_n-500x274.jpg') center center no-repeat;
         }
+
         .slider-box p {
-            padding: 0s;
+            padding: 5% 0px;
+        }
+
+        .slider-box .sub-title {
+            font-weight: 700;
         }
 
         .slider-box .btn {
             margin-top: 5%;
             width: 100%;
-            font-weight: 500;
+
+            font-weight: 600;
             color: white;
             background-color: #D1A31C;
             border: 1px solid #fff;
             border-radius: none;
+        }
+
+        .discover-our-menu {}
+
+        .our-menu-title-contain {
+            position: relative;
+            width: 100%;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .our-menu-title-contain .layer {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: url('https://bizmansky.vn/catalog/view/theme/bizman/image/background/bg-our-menu.png') center center no-repeat;
+            filter: blur(2px);
+            height: 100%;
+        }
+
+        .our-menu-content-contain {
+            width: 100%;
+            height: 80vh;
+            background-color: #004333;
+            padding: 2em;
+            color: #fff;
+        }
+
+        .our-menu-content-contain .wrap {}
+
+        .our-menu-content-contain .menu-left-banner {
+            width: 30%;
+            height: 70vh;
+            background-color: #CC9902;
+            float: left;
+        }
+
+        .our-menu-content-contain .menu-option {
+            width: 65%;
+            float: right;
+        }
+
+        .our-menu-content-contain .menu-option p {
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .our-menu-content-contain .menu-option .option {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 70px;
+            margin-top: 10px;
+            margin-bottom: 10px;
 
         }
+
+        .menu-option .option .table {
+            width: 150px;
+            height: 100%;
+            color: #99B4AD;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .menu-option .option .table:hover {
+            color: #004333;
+            background-color: #fff;
+        }
+
+        .our-menu-content-contain .slider-box {
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+            height: 35vh;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+            background-color: #D1A31C;
+
+        }
+
+        .our-menu-content-contain .slider-box button {
+            position: absolute;
+            z-index: 10;
+            font-size: 30px;
+            color: #fff;
+            border: none;
+            background-color: transparent;
+        }
+
+        .our-menu-content-contain .slider-box .right {
+            right: 0;
+            top: 45%;
+        }
+
+        .our-menu-content-contain .slider-box .left {
+            left: 0;
+            top: 45%;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        .our-menu-content-contain .button-contain {
+            width: 90%;
+            height: 10vh;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .our-menu-content-contain .button-contain .view-menu {
+            height: 90%;
+            width: 250px;
+            font-size: 20px;
+            font-weight: bold;
+            border: 1px solid #fff;
+            color: #fff;
+            background-color: #1A5648;
+            transition: 0.3s;
+        }
+
+        .our-menu-content-contain .button-contain .view-menu:hover {
+            background-color: #CC9902;
+        }
+
+        .latest-new-contain {
+            width: 100%;
+            height: 80vh;
+            background-image: url('https://bizmansky.vn/catalog/view/theme/bizman/image/background/Pattern.png');
+            background-color: #011D16;
+        }
+        
     </style>
 </head>
 
@@ -168,7 +319,7 @@
     <div class="home-event-show">
         <div class="home-event-wrap">
             <div class="event-title-container">
-                <h1>EVENT AND SHOW</h1><br>
+                <h1 style="margin-top: 20pxs;">EVENT AND SHOW</h1><br>
                 <p>Exciting events & shows at Bizman Sky - Chic & sophisticated rooftop space with breath-taking,
                     panoramic
                     city views. And Enjoying live musical performances by “Sky Jazz” to create a relaxed atmosphere and
@@ -180,32 +331,90 @@
                 <div class="prev"><button><i class="fa-solid fa-angle-left"></i></button></div>
                 <div class="next"><button><i class="fa-solid fa-angle-right"></i></button></i></div>
                 <div class="event-slider">
+                    <!-- bổ sung thêm ở đây -->
                     <div class="slider-box">
                         <div class="img"></div>
-                        <hr style="margin: 10px 0;">
-                        <h3>HAVE LUNCH WITH PARTNER - 25 PAX</h3>
-                        <p>11:30 - 11:30, 24/01/2024 <br>
-                        Operated by Hangoug</p>
-                        <button class="btn">BOOK A TABLE</button>
-                    </div>
-                    <div class="slider-box">
-                        <div class="img"></div>
-                        <hr style="margin: 10px 0;">
-                        <h3>HAVE LUNCH WITH PARTNER - 25 PAX</h3>
+                        <hr style="margin: 5% 0;">
+                        <div class="sub-title">HAVE LUNCH WITH PARTNER - 25 PAX</div>
                         <p>11:30 - 11:30, 24/01/2024 <br>
                             Operated by Hangoug</p>
                         <button class="btn">BOOK A TABLE</button>
                     </div>
                     <div class="slider-box">
                         <div class="img"></div>
-                        <hr style="margin: 10px 0;">
-                        <h3>HAVE LUNCH WITH PARTNER - 25 PAX</h3>
-                        <p>11:30 - 11:30, 24/01/2024 <br>  
-                        Operated by Hangoug</p>
+                        <hr style="margin: 5% 0;">
+                        <div class="sub-title">HAVE LUNCH WITH PARTNER - 25 PAX</div>
+                        <p>11:30 - 11:30, 24/01/2024 <br>
+                            Operated by Hangoug</p>
+                        <button class="btn">BOOK A TABLE</button>
+                    </div>
+                    <div class="slider-box">
+                        <div class="img"></div>
+                        <hr style="margin: 5% 0;">
+                        <div class="sub-title">HAVE LUNCH WITH PARTNER - 25 PAX</div>
+                        <p>11:30 - 11:30, 24/01/2024 <br>
+                            Operated by Hangoug</p>
                         <button class="btn">BOOK A TABLE</button>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="discover-our-menu">
+        <div class="our-menu-title-contain">
+            <div class="layer"></div>
+            <div class="wrap">
+                <span style="font-size: 1.5em; ">DISCOVER</span>
+                <h1 style="font-size: 3em; font-weight: bolder;">OUR MENU</h1>
+            </div>
+        </div>
+        <div class="our-menu-content-contain">
+            <div class="wrap">
+                <div class="menu-left-banner">
+                </div>
+                <div class="menu-option">
+                    <p>Bizman Sky features a dazzling open bar and mesmerizing live musical stage. We also serve a wide
+                        range of café options and high-powered, business lunches and dinners.</p>
+                    <div class="option">
+                        <div class="table">
+                            <h3>BIG LUNCH</h3>
+                            <span>11:30 - 13:40</span>
+                        </div>
+                        <div class="table">
+                            <h3>BIG LUNCH</h3>
+                            <span>11:30 - 13:40</span>
+                        </div>
+                        <div class="table">
+                            <h3>BIG LUNCH</h3>
+                            <span>11:30 - 13:40</span>
+                        </div>
+                        <div class="table">
+                            <h3>BIG LUNCH</h3>
+                            <span>11:30 - 13:40</span>
+                        </div>
+                    </div>
+                    <div class="slider-box">
+                        <button class="left"><i class="fa-solid fa-angle-left"></i></button>
+                        <button class="right"><i class="fa-solid fa-angle-right"></i></button>
+                        <div class="slider-wrap">
+                            <!-- code tập hợp sản phẩm ở đây -->
+                        </div>
+                    </div>
+                    <div class="button-contain">
+                        <button class="view-menu">
+                            VIEW FULL MENU
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="latest-new-contain">
+        <div class="latest-heading">
+
+        </div>
+        <div class="latest-news">
 
         </div>
     </div>
