@@ -23,7 +23,6 @@
         }
        .header-login-cart a i:hover{
         color: #CC9902;
-        
        }
     </style>
 
