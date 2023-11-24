@@ -16,15 +16,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = $conn->query($sql);
+    $sql_admin = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
+    $result_admin = $conn->query($sql_admin);
 
-    // Kiểm tra kết quả truy vấn
-    if ($result->num_rows > 0) {
-        header("Location: ../index.php");
+    if ($result_admin->num_rows > 0) {
+        header("Location: ../indexAdmin.php");
     } else {
-        $error_message = "Tên đăng nhập hoặc mật khẩu không đúng.";
-        
+        $sql_users = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $result_users = $conn->query($sql_users);
+
+        if ($result_users->num_rows > 0) {
+            header("Location: ../index.php");
+        } else {
+            $error_message = "Tên đăng nhập hoặc mật khẩu không đúng.";
+        }
     }
 }
     $conn->close();
@@ -181,12 +186,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
 
     <body>
-        <a class="home" href="./layouts/home.php"><i class="ti-arrow-left"></i>
+        <a class="home" href="../index.php"><i class="ti-arrow-left"></i>
             Quay Lại Trang Chủ
         </a>
         <div class="container">
             <form action="login.php" method="post">
-                <div class="logo"><img src="../images/logoduan.png" alt=""></div>
+                <div class="logo"><img src="../images/Logohanquoc.png" alt=""></div>
                 <h1>Đăng Nhập</h1>
                 
                 

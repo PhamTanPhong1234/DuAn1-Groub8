@@ -1,8 +1,3 @@
-<?php
-    session_start();
-
-   
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,10 +25,6 @@
         color: #CC9902;
         
        }
-       .showClient:hover .client {
-        display: block;
-       }
-      
     </style>
 
 
@@ -91,22 +82,12 @@
                         </div>
                     </div>
                     <div class="header__language">
-                        <div class="header-login-cart" style="width: 100%; height:30px ; display: grid;grid-template-columns: 1fr 1fr; gap:15px;position: relative;">
+
+                        <div class="header-login-cart" style="width: 100%; height:30px ; display: grid;grid-template-columns: 1fr 1fr 1fr; gap:15px;">
                             <a class="" style="color: #fff;" href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                            <a class="showClient" style="color: #fff;" href="./layouts/login.php"><i class="fa-solid fa-user"></i>
-                        
-                            <div class="client" style="
-    display: none; 
-    color: black;
-    background-color: white;
-    border-radius: 5px;
-    position: absolute;
-    font-size: 14px;
-    width: max-content;
-    bottom: -15px;
-    right: 0px;
-">Chào bạn </div>                        </a>
-                            
+                            <a class="" style="color: #fff;" href="./layouts/login.php"><i class="fa-solid fa-user"></i></a>
+                            <a class="" style="color: #fff;" href="./admin/pages/product/index.php"><i class="fa-solid fa-bars"></i></i></a>
+
                         </div>
 
                         <div class="language">
