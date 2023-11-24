@@ -338,22 +338,25 @@
             position: relative;
             padding: 10px;
             cursor: pointer;
-            color:#fff;
+            color: #fff;
             transition: 0.3s;
         }
-        .latest-news .news .news-box:hover{
+
+        .latest-news .news .news-box:hover {
             background-color: #fff;
             color: #011D16;
         }
+
         .latest-news .news-box .bottom {
             position: absolute;
             bottom: 10px;
         }
-        .home-gallery{
+
+        .home-gallery {
             width: 100%;
             height: 80vh;
             background-color: #004333;
-            
+
         }
     </style>
 </head>
@@ -471,36 +474,200 @@
             <div class="news-box">
                 <img src="https://bizmansky.vn/image/cache/catalog/Callendar/Valentine-banner-web-06-06-500x260.jpg"
                     width="100%" alt="">
-                    <h3>VALENTINE’S COUPLE DINNER SET</h3>
-                    <span>14/02/2024</span>
-                    <h3 class="bottom">READ MORE</h3>
+                <h3>VALENTINE’S COUPLE DINNER SET</h3>
+                <span>14/02/2024</span>
+                <h3 class="bottom">READ MORE</h3>
             </div>
             <div class="news-box"><img
                     src="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-1_-THUMBNAIL-1-500x260.jpg"
                     width="100%" alt="">
-                    <h3>GRAND OPENING PARTY  12.12</h3>
-                    <span>14/02/2024</span>
-                    <h3 class="bottom">READ MORE</h3>
+                <h3>GRAND OPENING PARTY 12.12</h3>
+                <span>14/02/2024</span>
+                <h3 class="bottom">READ MORE</h3>
             </div>
-            <div class="news-box"><img
-                    src="https://bizmansky.vn/image/cache/catalog/news/Bizman-4-500x260.jpg"
+            <div class="news-box"><img src="https://bizmansky.vn/image/cache/catalog/news/Bizman-4-500x260.jpg"
                     width="100%" alt="">
-                    <h3>GRAND OPENING HANGOUG</h3>
-                    <span>14/02/2024</span>
-                    <h3 class="bottom">READ MORE</h3>
+                <h3>GRAND OPENING HANGOUG</h3>
+                <span>14/02/2024</span>
+                <h3 class="bottom">READ MORE</h3>
             </div>
         </div>
     </div>
-    <div class="home-gallery">
-        <div class="home-gallery-header">
+    <div class="section-block section_gallery bg-green">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+            </div>
+            <div class="section_gallery__album">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 d-none d-lg-block">
+                        <div class="section_gallery__item">
+                            <a class="venobox" data-gall="gallery01"
+                                href="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/PVO-48-min-0x0.jpg">
+                                <img
+                                    src="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-4-0x0.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-12 section_gallery__grid">
+                        <div class="section_gallery__item d-lg-none">
+                            <a class="venobox" data-gall="gallery01"
+                                href="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/PVO-48-min-0x0.jpg">
+                                <img
+                                    src="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-4-0x0.jpg" />
+                            </a>
+                        </div>
+                        <div class="section_gallery__item">
+                            <a class="venobox" data-gall="gallery01"
+                                href="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-1_-THUMBNAIL-1%20(1)-0x0.jpg">
+                                <img
+                                    src="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-1_-THUMBNAIL-1%20(1)-0x0.jpg" />
+                            </a>
+                        </div>
+                        <div class="section_gallery__item">
+                            <a class="venobox" data-gall="gallery01"
+                                href="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/PVO-48-min-0x0.jpg">
+                                <img
+                                    src="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/PVO-48-min-0x0.jpg" />
+                            </a>
+                        </div>
+                        <div class="section_gallery__item">
+                            <a class="venobox" data-gall="gallery01"
+                                href="https://bizmansky.vn/image/cache/catalog/slider/PVO-58-min-0x0.jpg">
+                                <img src="https://bizmansky.vn/image/cache/catalog/slider/PVO-58-min-0x0.jpg" />
+                            </a>
+                        </div>
+                        <div class="section_gallery__item">
+                            <a class="venobox" data-gall="gallery01"
+                                href="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/PVO-43-min-0x0.jpg">
+                                <img
+                                    src="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/PVO-43-min-0x0.jpg" />
+                            </a>
+                        </div>
+
+                        <div class="section_gallery__item d-lg-none">
+                            <a class="venobox" data-gall="gallery01"
+                                href="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-4-0x0.jpg">
+                                <img
+                                    src="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-4-0x0.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 d-none d-lg-block">
+                        <div class="section_gallery__item">
+                            <a class="venobox" data-gall="gallery01"
+                                href="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-4-0x0.jpg">
+                                <img
+                                    src="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-4-0x0.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a class="bizman-button" href="gallery">
+                    View all </a>
+            </div>
+        </div>
+    </div>
+    <div class="section-block section-service section_video_text bg-green-dark pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="section-service__video">
+                        <a data-autoplay="true" data-vbtype="video" href="https://www.youtube.com/watch?v=JHNMIXNua_0"
+                            class="venobox">
+                            <img src="./images/imager_11_20248_700.jpg" alt="image Welcome to Hangug" class="w-100"
+                                width="640" height="360" />
+                            <i class="fa fa-play-circle"></i>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="section-title section-title-left">
+                        <span>Welcome to Hangug</span>
+                        <h2>Introduction</h2>
+                    </div>
+                    <div class="item-des">
+                        <p>Hangug &ndash; a spectacular rooftop restaurant and lounge located in Saigon serves a wide
+                            range of special coffees, English breakfast, brunch, biz-lunch, and relaxed dinners with
+                            inspiring drinks.</p>
+                        <p>Being wholly owned and operated by Huge-Fam, Hangug will be an elegant and welcoming space
+                            where business professionals can build connections and networking. Hangug is the place of
+                            choice for business professionals to share ultimate business opportunities, friendly
+                            conversations and nights of mesmerizing live music, authentic menus, and cool 360-views of
+                            the city from the rooftop of a 15 story building.
+                        </p><a class="view-more" href="our-story">Learn more </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <h1 class="d-none">Hangug - </h1>
+    <div class="">
+        <div class="">
+            <div id="content">
+            </div>
 
         </div>
-        <div class="home-gallery-album">
+    </div>
 
+    <div class="section-service section_our_menu  d-none d-xl-block">
+        <div class="section_our_menu__album owl-carousel owl-theme" data-lgg-items="1" data-lg-items="1"
+            data-md-items="" data-sm-items="2" data-xs-items="1" data-xss-items="1" data-autoplay="true" data-dot="true"
+            data-loop="true">
+            <div class="section_our_menu__item">
+                <img src="https://bizmansky.vn/image/cache/catalog/album/343166877_981796319622743_7986516752562804208_n-0x0.jpg"
+                    width="" height="" />
+            </div>
+            <div class="section_our_menu__item">
+                <img src="https://bizmansky.vn/image/cache/catalog/album/340688695_6599101996776221_4809452217739031082_n-0x0.jpg"
+                    width="" height="" />
+            </div>
+            <div class="section_our_menu__item">
+                <img src="https://bizmansky.vn/image/cache/catalog/album/339926930_1378898902858472_2027860225718777949_n-0x0.jpg"
+                    width="" height="" />
+            </div>
+            <div class="section_our_menu__item">
+                <img src="https://bizmansky.vn/image/cache/catalog/341626357_766580811850419_2496155783828533358_n-0x0.jpg"
+                    width="" height="" />
+            </div>
+            <div class="section_our_menu__item">
+                <img src="https://bizmansky.vn/image/cache/catalog/z4543101944326_10193293eb958fd875cc797e65ca9371-0x0.jpg"
+                    width="" height="" />
+            </div>
         </div>
-        <div class="home-gallery-button">
+    </div>
 
-        </div>
+
+    <div class="newsletter__social social bg-green">
+        <span>Follow us:</span>
+        <ul class="list-inline">
+            <li>
+                <a href="#" target="_blank">
+                    <img src="./images/fb.png" />
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <img src="./images/ins.png" />
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <img src="./images/youtube.png" />
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <img src="./images/tri.png" />
+                </a>
+            </li>
+        </ul>
+    </div>
     </div>
 </body>
 

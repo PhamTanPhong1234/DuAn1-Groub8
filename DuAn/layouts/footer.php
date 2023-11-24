@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="footer__column">
-                    <img src="https://bizmansky.vn/image/catalog/logo/Logo.png" alt="Bizman Sky - " class="footer__logo" width="294" height="37" />
+                    <img src="./images/logohome.png" alt="Bizman Sky - " class="footer__logo" width="294" height="37" />
                     <hr>
                     <div class="footer__content">
                         <p class="footer-text">

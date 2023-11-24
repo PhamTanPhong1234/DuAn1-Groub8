@@ -3,7 +3,7 @@ include "./config/connect.php";
 
 ?>
 
-<?php include './layouts/header.php' ?>
+<?php include './layouts/headerAdmin.php' ?>
 
 <?php
     

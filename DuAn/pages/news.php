@@ -128,7 +128,7 @@ aside .aside-item:not(:last-child){
                                 </div>
                                 <div class="blog-item-thumbnail">
                                     <a href="#" title="Grand Opening Party 12.12">
-                                        <img src="https://bizmansky.vn/image/cache/catalog/gallery/Grand%20Event/HINH-1_-THUMBNAIL-1-1200x675.jpg" style="max-width:100%;" class="img-responsive" alt="Grand Opening Party 12.12">
+                                        <img src="https://i.pinimg.com/originals/85/56/7e/85567ea7f39979cdef192522fecf59ec.jpg" style="max-width:100%;" class="img-responsive" alt="Grand Opening Party 12.12">
                                     </a>
                                 </div>
                                 <div class="blog-item-info">                                                                
@@ -139,7 +139,7 @@ aside .aside-item:not(:last-child){
                                                     <article class="blog-item">
                                 <div class="blog-item-title">
                                     <h3 class="blog-item-name">
-                                        <a href="#" title="Grand Opening Bizman Sky">Grand Opening Bizman Sky</a>
+                                        <a href="#" title="Grand Opening Hangug">Grand Opening Hangug</a>
                                     </h3>
                                                                             <span class="devi"> - </span>
                                         <span class="blog-item-category">
@@ -151,8 +151,8 @@ aside .aside-item:not(:last-child){
                                         12/12/2022                                    </div>
                                 </div>
                                 <div class="blog-item-thumbnail">
-                                    <a href="#" title="Grand Opening Bizman Sky">
-                                        <img src="https://bizmansky.vn/image/cache/catalog/news/Bizman-4-1200x675.jpg" style="max-width:100%;" class="img-responsive" alt="Grand Opening Bizman Sky">
+                                    <a href="#" title="Grand Opening Hangug">
+                                        <img src="https://bizmansky.vn/image/cache/catalog/news/Bizman-4-1200x675.jpg" style="max-width:100%;" class="img-responsive" alt="Grand Opening Hangug">
                                     </a>
                                 </div>
                                 <div class="blog-item-info">                                                                
@@ -163,7 +163,7 @@ aside .aside-item:not(:last-child){
                                                     <article class="blog-item">
                                 <div class="blog-item-title">
                                     <h3 class="blog-item-name">
-                                        <a href="#" title="Bizman Sky - Bầu trời cơ hội đang chờ đón bạn">Bizman Sky - Bầu trời cơ hội đang chờ đón bạn</a>
+                                        <a href="#" title="Hangug - Bầu trời cơ hội đang chờ đón bạn">Hangug - Bầu trời cơ hội đang chờ đón bạn</a>
                                     </h3>
                                                                             <span class="devi"> - </span>
                                         <span class="blog-item-category">
@@ -175,13 +175,13 @@ aside .aside-item:not(:last-child){
                                         27/11/2022                                    </div>
                                 </div>
                                 <div class="blog-item-thumbnail">
-                                    <a href="#" title="Bizman Sky - Bầu trời cơ hội đang chờ đón bạn">
-                                        <img src="https://bizmansky.vn/image/cache/catalog/news/Bizman-1-1200x675.jpg" style="max-width:100%;" class="img-responsive" alt="Bizman Sky - Bầu trời cơ hội đang chờ đón bạn">
+                                    <a href="#" title="Hangug - Bầu trời cơ hội đang chờ đón bạn">
+                                        <img src="https://bizmansky.vn/image/cache/catalog/news/Bizman-1-1200x675.jpg" style="max-width:100%;" class="img-responsive" alt="Hangug - Bầu trời cơ hội đang chờ đón bạn">
                                     </a>
                                 </div>
                                 <div class="blog-item-info">                                                                
                                     <p class="blog-item-summary margin-bottom-5 item-des m-0"> 
-                                        Ngôi sao cơ hội Bizman Sky sẽ sớm xuất hiện vào 28.11 sắp tới!                                    </p>
+                                        Ngôi sao cơ hội Hangug sẽ sớm xuất hiện vào 28.11 sắp tới!                                    </p>
                                 </div>
                             </article>
                                                     <article class="blog-item">
@@ -205,7 +205,7 @@ aside .aside-item:not(:last-child){
                                 </div>
                                 <div class="blog-item-info">                                                                
                                     <p class="blog-item-summary margin-bottom-5 item-des m-0"> 
-                                        Như một ngôi sao giữa bầu trời cơ hội, Bizman Sky là điểm sáng nổi bật trên rooftop tầng 15 với góc nhìn 360 độ toàn cảnh Sài Gòn. Kiến trúc 3 sảnh (trong…                                    </p>
+                                        Như một ngôi sao giữa bầu trời cơ hội, Hangug là điểm sáng nổi bật trên rooftop tầng 15 với góc nhìn 360 độ toàn cảnh Sài Gòn. Kiến trúc 3 sảnh (trong…                                    </p>
                                 </div>
                             </article>
                                             </div>                    

@@ -236,11 +236,12 @@
         </div>
         <div class="list">
             <ul>
-                <li><a href=""><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
-                <li><a href=""><i class="fa-solid fa-list"></i>Danh Sách Đặt Bàn</a></li>
+                <li><a href="./product/index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
                 <li style="background-color: #FFD33A;"><a style="color: #000;" href=""><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li>
-                <li><a href=""><i class="fa-solid fa-square-plus"></i></i>qeqweqwe</a></li>
-                <li><a href=""><i class="fa-solid fa-square-plus"></i></i>qưeqweqwe</a></li>
+                <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
+                <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
+                <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Ảnh</a></li>
+                <li><a href=""><i class="fa-solid fa-list"></i>Danh Sách User</a></li>
             </ul>
         </div>
     </div>
