@@ -4,8 +4,16 @@ function connect_db() {
     $username = "root";
     $password = "";
     $dbname = "duan";
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $conn;
+
+    // Kết nối đến MySQLi
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Kiểm tra kết nối
+    if ($conn->connect_error) {
+        die("Kết nối không thành công: " . $conn->connect_error);
+    }
+
+    return $conn; // Trả về đối tượng kết nối
 }
+
 ?>

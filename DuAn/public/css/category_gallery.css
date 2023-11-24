@@ -1,0 +1,61 @@
+.section-block.gallery__list{
+    padding:60px 0;
+}
+.gallery .gallery__list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+.gallery .section-title h2{
+    display: inline-block;
+    position: relative;
+}
+.gallery .section-title h2:after{
+    content: "";
+    display: block;
+    width: 63px;
+    height: 25px;
+    background-image: url(../../image/icon/Small\ ornament.png);
+    position: absolute;
+    top: 50%;
+    margin-top: -12.5px;
+    right: -93px;
+    transform: rotate(180deg);
+}
+.gallery .gallery__list img{
+    height: 280px;
+    object-fit: cover;
+    width:100%;
+}
+@media (min-width:992px){
+    .news-category__gallery .container-fluid{
+        padding-left:20px;
+        padding-right:20px;
+    }
+}
+@media (min-width:1400px){
+    .news-category__gallery .container-fluid{
+        padding-left:60px;
+        padding-right:60px;
+    }
+}
+@media (max-width:991px){
+    .gallery .gallery__list{
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 5px;
+    }
+    .gallery .gallery__list img{
+        height:200px;
+    }
+}
+@media (max-width:767px){
+   .gallery .gallery__list img{
+        height:150px;
+    } 
+}
+@media (max-width:575px){
+    .gallery .section-title h2{
+        font-size:18px;
+        line-height: 24px;
+    }
+}
