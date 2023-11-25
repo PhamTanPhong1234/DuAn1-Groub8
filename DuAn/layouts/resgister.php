@@ -8,9 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $phone = $_POST["phone"];
     $email = $_POST["email"];
-
-    // $conn = connect_db();
-
+    $conn = connect_db();
     if ($conn) {
         try {
             $sql = "INSERT INTO users (username, password, phone, email) VALUES (?, ?, ?, ?)";
@@ -21,9 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(2, $password);
             $stmt->bindParam(3, $phone);
             $stmt->bindParam(4, $email);
-
             $stmt->execute();
-
             $message = 'Đăng Kí Thành Công';
         } catch (PDOException $e) {
             echo $message = 'Lỗi' . $e->getMessage();

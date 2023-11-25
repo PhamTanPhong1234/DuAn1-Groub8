@@ -1,64 +1,38 @@
 <?php
-// include "../config/connect.php";
+include "../config/connectt.php";
 
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $username = $_POST["username"];
-//     $password = $_POST["password"];
-//     $phone = $_POST["phone"];
-//     $email = $_POST["email"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $phone = $_POST["phone"];
+    $email = $_POST["email"];
 
-//     $conn = connect_db();
+    // $conn = connect_db();
 
-//     if ($conn) {
-//         try {
-//             $sql = "INSERT INTO users (username, password, phone, email) VALUES (?, ?, ?, ?)";
-//             $stmt = $conn->prepare($sql);
+    if ($conn) {
+        try {
+            $sql = "INSERT INTO users (username, password, phone, email) VALUES (?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
 
-//             // Bind các tham số
-//             $stmt->bindParam(1, $username);
-//             $stmt->bindParam(2, $password);
-//             $stmt->bindParam(3, $phone);
-//             $stmt->bindParam(4, $email);
+            // Bind các tham số
+            $stmt->bindParam(1, $username);
+            $stmt->bindParam(2, $password);
+            $stmt->bindParam(3, $phone);
+            $stmt->bindParam(4, $email);
 
-//             $stmt->execute();
+            $stmt->execute();
 
-//             echo "<p>Đăng ký thành công!</p>";
-//         } catch (PDOException $e) {
-//             echo "Lỗi: " . $e->getMessage();
-//         } finally {
-//             $conn = null;
-//         }
-//     } else {
-//         echo "<p>Kết nối đến cơ sở dữ liệu thất bại.</p>";
-//     }
-// }
-?>
-<?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "duan";
-
-// $conn = new mysqli($servername, $username, $password, $dbname);
-
-// if ($conn->connect_error) {
-//     die("Kết nối không thành công: " . $conn->connect_error);
-// }
-// $username = $_POST["username"];
-// $password = $_POST["password"];
-
-// $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-// $result = $conn->query($sql);
-
-// // Kiểm tra kết quả truy vấn
-// if ($result->num_rows > 0) {
-//     header("Location: ../index.php");
-// } else {
-//     echo "Tên đăng nhập hoặc mật khẩu không đúng.";
-// }
-
-// $conn->close();
+            echo "<p>Đăng ký thành công!</p>";
+        } catch (PDOException $e) {
+            echo "Lỗi: " . $e->getMessage();
+        } finally {
+            $conn = null;
+        }
+    } else {
+        echo "<p>Kết nối đến cơ sở dữ liệu thất bại.</p>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
