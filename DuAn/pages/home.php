@@ -20,6 +20,7 @@
 
         .home-main-banner {}
 
+        
         .home-event-show {
             width: 100%;
             height: 90vh;
