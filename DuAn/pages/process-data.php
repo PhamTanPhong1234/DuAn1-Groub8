@@ -1,13 +1,10 @@
 <?php
-
 include "../config/connectt.php";
-
-$conn = connect_db();
+// include "../config/connect.php";
+// $conn = connect_db();
 
 
 try {
-   
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = $_POST["name"];
         $phone = $_POST["phone"];

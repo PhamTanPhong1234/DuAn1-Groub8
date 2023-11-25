@@ -257,6 +257,7 @@ $conn->close();
             color: #000;
             line-height: 30px;
         }
+
         table {
             width: 90%;
             margin: 20px auto;
@@ -296,14 +297,13 @@ $conn->close();
             background-color: #4caf50;
             color: #fff;
             text-decoration: none;
-            border-radius:10px;
+            border-radius: 10px;
             transition: background-color 0.3s;
         }
 
         td a:hover {
             background-color: #45a049;
         }
-
     </style>
 </head>
 
@@ -318,18 +318,19 @@ $conn->close();
         <div class="list">
             <ul>
                 <li style="background-color: #FFD33A;"><a style="color: #000;" href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
-                    <li><a  href="./addProduct.php"><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li>
-                    <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
-                    <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
-                    <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Ảnh</a></li>
-                    <li><a href=""><i class="fa-solid fa-list"></i>Danh Sách User</a></li>
+                <li><a href="./addProduct.php"><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li>
+                <li><a href="./order.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
+                <li><a href="./booking-table.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
+                <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Ảnh</a></li>
+                <li><a href="./user_list.php"><i class="fa-solid fa-list"></i>Danh Sách User</a></li>
             </ul>
         </div>
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
-        <h1 style="width: 100%;text-align: center;margin-top: 10px;">Danh Sách Món Ăn</h1>
+        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Người Dùng</h1>
         <table>
+
             <thead>
                 <tr>
                     <th>STT</th>
