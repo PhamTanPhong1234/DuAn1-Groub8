@@ -1,3 +1,32 @@
+<?php
+$severname = "127.0.0.1:3309
+";
+$username = "root";
+$password = "";
+$dbname = "duan";
+
+$conn = new mysqli($severname, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Kết nối không thành công: " . $conn->connect_error);
+}
+// chọn tất cả từ bảng product
+$sql = "SELECT * FROM khachandanh";
+$result = $conn->query($sql);
+
+// Khởi tạo mảng để lưu trữ dữ liệu
+$menuItems = array();
+
+// Kiểm tra kết quả truy vấn
+if ($result->num_rows > 0) {
+    //tạo vòng lặp để xuất mảng menuItem
+    while ($row = $result->fetch_assoc()) {
+        $menuItems[] = $row;
+    }
+}
+
+// $conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,6 +128,7 @@
             width: 75%;
             height: 94vh;
             background-color: #F5F5F5;
+            overflow: auto;
         }
 
         /* css chung */
@@ -227,7 +257,53 @@
             color: #000;
             line-height: 30px;
         }
-        
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        th {
+            text-align: center;
+            background-color: #002D33;
+            color: #fff;
+        }
+
+        td img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        td a {
+            display: inline-block;
+            padding: 2px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        td a:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
@@ -241,10 +317,10 @@
         </div>
         <div class="list">
             <ul>
-                <li><a href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
-                <li style="background-color: #FFD33A;"><a style="color: #000;" href=""><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li>
-                <li><a href="./order.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
-                <li><a href="./booking-table.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
+                <li><a href=" ./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
+                <li><a href="./addProduct.php"><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li>
+                <li><a href="./order.php"><i class=" fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
+                <li style="background-color: #FFD33A;"><a style="color: #000; "href=""><i class=" fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
                 <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Ảnh</a></li>
                 <li><a href="./user_list.php"><i class="fa-solid fa-list"></i>Danh Sách User</a></li>
             </ul>
@@ -252,39 +328,39 @@
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
-        <div class="add-product-title">
-            <h1 style="width: 100%;text-align: center;padding-top: 30px;">Thêm Món Ăn</h1>
-            <form action="./process_product.php" method="POST">
-                <div>
-                    <label for="productName">Tên Món</label>
-                    <br>
-                    <input type="text" name="productName" id="productName">
-                </div>
-                <div>
-                    <label for="productPrice">Giá Tiền</label>
-                    <br>
-                    <input type="text" name="productPrice" id="productPrice">
-                </div>
-                <div>
-                    <label for="quantity">Số Lượng</label>
-                    <br>
-                    <input type="text" name="quantity" id="quantity">
-                </div>
-                <div>
-                    <label for="cost">Nguyên Liệu</label>
-                    <br>
-                    <input type="text" name="cost" id="cost">
-                </div>
-                <div>
-                    <label for="productImage">Url Ảnh (3x4)</label>
-                    <br>
-                    <input type="text" name="productImage" id="productImage">
-                </div>
-                <div class="submit">
-                    <input type="submit" id="submit" value="Nhập">
-                </div>
-            </form>
-        </div>
+        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Đặt Bàn</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Khách Đặt Bàn</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Email</th>
+                    <th>Số Khách</th>
+                    <th>Ngày Đặt</th>
+                    <th>Thời Gian Đặt</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $stt = 1;
+                foreach ($menuItems as $item) {
+                    echo "<tr>";
+                    echo "<td>{$stt}</td>";
+                    echo "<td>{$item['names']}</td>";
+                    echo "<td>{$item['phone']}</td>";
+                    echo "<td>{$item['email']}</td>";
+                    echo "<td>{$item['soluongKhach']}</td>";
+                    echo "<td>{$item['ngayDat']}</td>";
+                    echo "<td>{$item['times']}</td>";
+                    echo "</tr>";
+
+                    $stt++;
+                }
+                ?>
+            </tbody>
+        </table>
         <!-- có thể thay đổi nội dung -->
     </div>
     <div class="logout">

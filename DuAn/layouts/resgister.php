@@ -1,49 +1,50 @@
 <?php
 
-// include "../config/connectt.php";
+include "../config/connectt.php";
+$message = '';
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $phone = $_POST["phone"];
+    $email = $_POST["email"];
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $username = $_POST["username"];
-//     $password = $_POST["password"];
-//     $phone = $_POST["phone"];
-//     $email = $_POST["email"];
+    // $conn = connect_db();
 
-//     $conn = connect_db();
+    if ($conn) {
+        try {
+            $sql = "INSERT INTO users (username, password, phone, email) VALUES (?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
 
-//     if ($conn) {
-//         try {
-//             $sql = "INSERT INTO users (username, password, phone, email) VALUES (?, ?, ?, ?)";
-//             $stmt = $conn->prepare($sql);
+            // Bind các tham số
+            $stmt->bindParam(1, $username);
+            $stmt->bindParam(2, $password);
+            $stmt->bindParam(3, $phone);
+            $stmt->bindParam(4, $email);
 
-//             // Bind các tham số
-//             $stmt->bindParam(1, $username);
-//             $stmt->bindParam(2, $password);
-//             $stmt->bindParam(3, $phone);
-//             $stmt->bindParam(4, $email);
+            $stmt->execute();
 
-//             $stmt->execute();
-
-//             echo "<p>Đăng ký thành công!</p>";
-//         } catch (PDOException $e) {
-//             echo "Lỗi: " . $e->getMessage();
-//         } finally {
-//             $conn = null;
-//         }
-//     } else {
-//         echo "<p>Kết nối đến cơ sở dữ liệu thất bại.</p>";
-//     }
-// }
+            $message = 'Đăng Kí Thành Công';
+        } catch (PDOException $e) {
+            echo $message = 'Lỗi' . $e->getMessage();
+        } finally {
+            $conn = null;
+        }
+    } else {
+        $message = 'kết nối thất bai';
+    }
+}
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký</title>
-    <link href="https://bizmansky.vn/image/catalog/logo/logo-fav.png" rel="icon"/>
+    <link href="https://bizmansky.vn/image/catalog/logo/logo-fav.png" rel="icon" />
     <style>
         body {
             font-family: Open Sans;
@@ -137,11 +138,13 @@
             border: 2px solid #cdcdcd;
 
         }
-        ::placeholder{
+
+        ::placeholder {
             font-size: 12px;
-                color: white;
-                font-weight: 200;
-            }
+            color: white;
+            font-weight: 200;
+        }
+
         h4 {
             width: 100%;
             text-align: center;
@@ -183,7 +186,7 @@
         Quay Lại Trang Chủ
     </a>
     <div class="container">
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="logo"><img src="../images/Logohanquoc.png" alt=""></div>
             <h1>Đăng ký</h1>
 
@@ -192,7 +195,7 @@
             <br>
             <input type="password" id="confirm" name="confirm" required placeholder="Nhập Lại Mật Khẩu">
             <br>
-    
+
             <input type="text" id="number" name="phone" required placeholder="Số Điện Thoại">
             <br>
 
@@ -201,7 +204,7 @@
             <input type="submit" value="Đăng Ký">
             <br>
 
-            <h4>Bạn Đã Có Tài Khoản <a href="./login.php">Đăng Nhập</a></h4>
+            <h4><?php echo $message;?>Bạn Đã Có Tài Khoản <a href="./login.php">Đăng Nhập</a></h4>
         </form>
     </div>
 </body>
