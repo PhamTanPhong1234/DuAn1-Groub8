@@ -92,7 +92,7 @@
                     </div>
                     <div class="header__language">
                         <div class="header-login-cart" style="width: 100%; height:30px ; display: grid;grid-template-columns: 1fr 1fr; gap:15px;position: relative;">
-                            <a class="" style="color: #fff;" href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a class="" style="color: #fff;" href="./layouts/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                             <a class="showClient" style="color: #fff;" href="./layouts/login.php"><i class="fa-solid fa-user"></i>
                         
                             <div class="client" style="
