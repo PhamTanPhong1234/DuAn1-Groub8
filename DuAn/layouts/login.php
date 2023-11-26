@@ -208,6 +208,7 @@ $conn->close();
             <br>
 
             <h4>Chưa Có Tài Khoản <a href="./resgister.php">Đăng Kí Ngay</a></h4>
+            <h4><?php echo $error_message; ?></h4>
         </form>
     </div>
 </body>

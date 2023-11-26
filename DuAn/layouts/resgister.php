@@ -2,19 +2,17 @@
 
 include "../config/connectt.php";
 $message = '';
-
+$conn = connect_db();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $phone = $_POST["phone"];
     $email = $_POST["email"];
-    $conn = connect_db();
+
     if ($conn) {
         try {
             $sql = "INSERT INTO users (username, password, phone, email) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-
-            // Bind các tham số
             $stmt->bindParam(1, $username);
             $stmt->bindParam(2, $password);
             $stmt->bindParam(3, $phone);
@@ -22,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute();
             $message = 'Đăng Kí Thành Công';
         } catch (PDOException $e) {
-            echo $message = 'Lỗi' . $e->getMessage();
+            $message = 'Lỗi';
         } finally {
             $conn = null;
         }
@@ -32,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,6 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://bizmansky.vn/image/catalog/logo/logo-fav.png" rel="icon" />
     <style>
         body {
@@ -174,9 +174,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 
-
-
-
 <body>
     <a class="home" href="../index.php"><i class="ti-arrow-left"></i>
         Quay Lại Trang Chủ
@@ -200,7 +197,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="submit" value="Đăng Ký">
             <br>
 
-            <h4><?php echo $message;?>Bạn Đã Có Tài Khoản <a href="./login.php">Đăng Nhập</a></h4>
+            <h4>Bạn Đã Có Tài Khoản <a href="./login.php">Đăng Nhập</a></h4>
+            <h4 style="color: cyan;"><?php echo $message; ?></h4>
         </form>
     </div>
 </body>

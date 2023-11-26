@@ -21,10 +21,11 @@
             padding: 140px 0;
             margin-top: 95px;
         }
-       .header-login-cart a i:hover{
-        color: #CC9902;
-        
-       }
+
+        .header-login-cart a i:hover {
+            color: #CC9902;
+
+        }
     </style>
 
 
@@ -39,6 +40,7 @@
                         <a href="/duan/index.php?action=home">
                             <img class="header__logo-main" src="./images/logohome.png" width="247" height="31" />
                         </a>
+                        ơ
                     </div>
                     <button type="button" class="nav-line-group d-block d-lg-none">
                         <span class="icon-bar"></span>

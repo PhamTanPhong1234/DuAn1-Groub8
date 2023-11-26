@@ -328,7 +328,7 @@ $conn->close();
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
-        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Người Dùng</h1>
+        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Món Ăn</h1>
         <table>
 
             <thead>
@@ -336,8 +336,8 @@ $conn->close();
                     <th>STT</th>
                     <th>Mã món ăn</th>
                     <th>Hình Ảnh</th>
-                    <th>Name</th>
-                    <th>Price</th>
+                    <th>Tên Món </th>
+                    <th>Giá Tiền</th>
                     <th>Chỉnh sửa</th>
                     <th>Xoá sản phẩm</th>
                 </tr>
