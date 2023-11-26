@@ -325,8 +325,8 @@ $conn->close();
                 <li style="background-color: #FFD33A;"><a style="color: #000;" href="./user_list.php"><i class="fa-solid fa-list"></i>Danh Sách User</a></li>
             </ul>
         </div>
-    </div>R
-    <div id="main-content">
+    </div>
+    <div ied="main-content">
         <!-- có thể thay đổi nội dung -->
         <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Người Dùng</h1>
         <table>
