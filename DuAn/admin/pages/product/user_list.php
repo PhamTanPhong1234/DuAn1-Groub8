@@ -326,11 +326,10 @@ $conn->close();
             </ul>
         </div>
     </div>
-    <div ied="main-content">
+    <div id="main-content">
         <!-- có thể thay đổi nội dung -->
         <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Người Dùng</h1>
         <table>
-
             <thead>
                 <tr>
                     <th>STT</th>
