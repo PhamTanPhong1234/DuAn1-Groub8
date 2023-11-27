@@ -10,7 +10,7 @@ if ($conn->connect_error) {
     die("Kết nối không thành công: " . $conn->connect_error);
 }
 // chọn tất cả từ bảng product
-$sql = "SELECT * FROM products";
+$sql = "SELECT * FROM khachandanh";
 $result = $conn->query($sql);
 
 // Khởi tạo mảng để lưu trữ dữ liệu
@@ -24,7 +24,7 @@ if ($result->num_rows > 0) {
     }
 }
 
-$conn->close();
+// $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -316,10 +316,10 @@ $conn->close();
         </div>
         <div class="list">
             <ul>
-                <li style="background-color: #FFD33A;"><a style="color: #000;" href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
+                <li><a href=" ./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
                 <li><a href="./addProduct.php"><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li>
-                <li><a href="./order.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
-                <li><a href="./booking-table.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
+                <li><a href="./order.php"><i class=" fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
+                <li style="background-color: #FFD33A;"><a style="color: #000; "href=""><i class=" fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
                 <!-- <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Ảnh</a></li> -->
                 <li><a href="./user_list.php"><i class="fa-solid fa-list"></i>Danh Sách User</a></li>
             </ul>
@@ -327,17 +327,18 @@ $conn->close();
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
-        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Món Ăn</h1>
+        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Đặt Bàn</h1>
         <table>
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Mã món ăn</th>
-                    <th>Hình Ảnh</th>
-                    <th>Tên Món </th>
-                    <th>Giá Tiền</th>
-                    <th>Chỉnh sửa</th>
-                    <th>Xoá sản phẩm</th>
+                    <th>Tên Khách Đặt Bàn</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Email</th>
+                    <th>Số Khách</th>
+                    <th>Ngày Đặt</th>
+                    <th>Thời Gian Đặt</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -346,17 +347,14 @@ $conn->close();
                 foreach ($menuItems as $item) {
                     echo "<tr>";
                     echo "<td>{$stt}</td>";
-                    echo "<td>{$item['id']}</td>";
-                    echo "<td><img src=" . $item['productImage'] . "></td>";
-                    echo "<td>{$item['productName']}</td>";
-                    echo "<td>{$item['productPrice']}</td>";
-                    echo "<td>";
-                    echo " <a  style='background-color: #2196F3;' href='update.php?id=" . $item['id'] . "'>Sửa</a> ";
-                    echo "</td>";
-                    echo "<td>";
-                    echo " <a style='background-color:red;' href='delete.php?id=" . $item['id'] . "'>Xóa</a> ";
-                    echo "</td>";
+                    echo "<td>{$item['names']}</td>";
+                    echo "<td>{$item['phone']}</td>";
+                    echo "<td>{$item['email']}</td>";
+                    echo "<td>{$item['soluongKhach']}</td>";
+                    echo "<td>{$item['ngayDat']}</td>";
+                    echo "<td>{$item['times']}</td>";
                     echo "</tr>";
+
                     $stt++;
                 }
                 ?>

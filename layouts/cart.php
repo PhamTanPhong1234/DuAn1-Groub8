@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+$user = $_SESSION["username"];
+
+
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,7 +16,7 @@ if ($conn->connect_error) {
     die("Kết nối không thành công: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM products";
+$sql = "SELECT * FROM gioHang WHERE maKHdat = '$user'";
 $result = $conn->query($sql);
 
 // Khởi tạo mảng để lưu trữ dữ liệu
@@ -203,23 +209,7 @@ $conn->close();
 
         /* Form and Table Styles */
 
-        form {
-            width: 100%;
-            margin: 40px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        /* input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 1em;
-            border-radius: 5px;
-            border: 2px solid #4caf50;
-            transition: 0.3s;
-        } */
-
+        
         input[type="text"]:focus {
             outline: none;
             border-radius: 5px;
@@ -343,7 +333,7 @@ $conn->close();
     <div id="sitebar">
         <div class="admin-profile">
             <div class="img"><img src="https://png.pngtree.com/png-vector/20191030/ourlarge/pngtree-cart-plain-shoping-trolly-icon-vector-illustration-for-web-png-image_1927620.jpg" alt=""></div>
-            <p class="name" style="font-weight : 600;">Chào Quốc </ơ>
+            <p class="name" style="font-weight : 600;">Chào <?php echo $user ?> </ơ>
                 <br>
             <p style="font-size : 10px;">Chào Mừng Quay Trở Lại</p>
         </div>
@@ -374,18 +364,18 @@ $conn->close();
                 foreach ($menuItems as $item) {
                     echo "<tr>";
                     echo "<td>{$stt}</td>";
-                    echo "<td><img src=".$item['productImage']."></td>";
-                    echo "<td>{$item['productName']}</td>";
-                    echo "<td>{$item['productPrice']}đ</td>";
+                    echo "<td><img src=".$item['hinhAnh']."></td>";
+                    echo "<td>{$item['tenMon']}</td>";
+                    echo "<td>{$item['giaTien']}đ</td>";
                     echo "<td>";
-                    echo " <input type='number' class='quantity' name='quantity' data-id='{$item['id']}' data-price='{$item['productPrice']}' value='1' min='1'>";
+                    echo " <input type='number' class='quantity' name='quantity' data-id='{$item['id']}' data-price='{$item['giaTien']}' value='1' min='1'>";
                     echo "</td>";
                     echo "<td>";
-                    echo " <a class='cartDel' href='delete.php?id=" . $item['id'] ."'>Xóa</a> ";
+                    echo " <a class='cartDel' href='deleteCart.php?id=" . $item['id'] ."'>Xóa</a> ";
                     echo "</td>";
                     echo "</tr>";
 
-                    $totalAmount += floatval(str_replace('.', '', $item['productPrice']));
+                    $totalAmount += floatval(str_replace('.', '', $item['giaTien']));
                     $stt++;
                 }
 
@@ -400,22 +390,33 @@ $conn->close();
         <!-- có thể thay đổi nội dung -->
     </div>
     <div class="logout">
-        <a href="../../../indexAdmin.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
+        <a href="../index.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
     </div>
     
-    <div class='tongCar'>
-            <label for='tongtien'>Tổng tiền:</label>
-            <input type='text' id='tongtien' name='tongtien' min='1' value='<?php echo number_format($totalAmount, 0, ',', '.') ?>đ' readonly>
-            <label for='quantity'>Số lượng khách:</label>
-            <input type='number' id='quantityCart' name='quantityCart' min='1'>
 
-            <label for='date'>Ngày đặt:</label>
-            <input type='date' id='date' name='date'>
 
-            <button id='paymentButton'>Thanh toán</button>
-        </div>
+    <form method="post" action="process_payment.php">
+        <div class='tongCar'>
+                <label for='tongtien'>Tổng tiền:</label>
+                <input type='text' id='tongtien' name='tongtien' min='1' value='<?php echo number_format($totalAmount, 0, ',', '.') ?>đ' readonly>
+                <label for='quantity'>Số lượng khách:</label>
+                <input type='number' id='quantityCart' name='quantityCart' min='1'>
 
-        <script>
+                <label for='date'>Ngày đặt:</label>
+                <input type='date' id='date' name='date'>
+
+                <input type="hidden" name="totalAmount" value="<?php echo $totalAmount; ?>">
+                <input type="hidden" name="quantityC" value="<?php echo $selectedQuantity; ?>">
+                <input type="hidden" name="selectedDate" value="<?php echo $selectedDate; ?>">
+                <input type="hidden" name="userNamee" value="<?php echo $user; ?>">
+
+                <button type="submit" id="paymentButton" name="submitPayment">Thanh toán</button>
+
+            </div>
+    </form>
+       
+
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
             var giaElements = document.querySelectorAll("#main-content tbody tr td:nth-child(4)");
 
@@ -465,7 +466,6 @@ $conn->close();
             });
         });
     </script>
-
 
    
 

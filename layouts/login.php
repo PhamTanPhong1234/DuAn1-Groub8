@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
     $servername = "localhost";
     $username = "root";
@@ -26,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result_users = $conn->query($sql_users);
 
         if ($result_users->num_rows > 0) {
+            $_SESSION["username"] = $username;
             header("Location: ../index.php");
         } else {
             $error_message = "Tên đăng nhập hoặc mật khẩu không đúng.";

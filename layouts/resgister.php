@@ -1,39 +1,39 @@
 <?php
 
-// include "../config/connectt.php";
+include "../config/connectt.php";
 
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $username = $_POST["username"];
-//     $password = $_POST["password"];
-//     $phone = $_POST["phone"];
-//     $email = $_POST["email"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $phone = $_POST["phone"];
+    $email = $_POST["email"];
 
-//     $conn = connect_db();
+    $conn = connect_db();
 
-//     if ($conn) {
-//         try {
-//             $sql = "INSERT INTO users (username, password, phone, email) VALUES (?, ?, ?, ?)";
-//             $stmt = $conn->prepare($sql);
+    if ($conn) {
+        try {
+            $sql = "INSERT INTO users (username, password, phone, email) VALUES (?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
 
-//             // Bind các tham số
-//             $stmt->bindParam(1, $username);
-//             $stmt->bindParam(2, $password);
-//             $stmt->bindParam(3, $phone);
-//             $stmt->bindParam(4, $email);
+            // Bind các tham số
+            $stmt->bindParam(1, $username);
+            $stmt->bindParam(2, $password);
+            $stmt->bindParam(3, $phone);
+            $stmt->bindParam(4, $email);
 
-//             $stmt->execute();
+            $stmt->execute();
 
-//             echo "<p>Đăng ký thành công!</p>";
-//         } catch (PDOException $e) {
-//             echo "Lỗi: " . $e->getMessage();
-//         } finally {
-//             $conn = null;
-//         }
-//     } else {
-//         echo "<p>Kết nối đến cơ sở dữ liệu thất bại.</p>";
-//     }
-// }
+           
+        } catch (PDOException $e) {
+            echo "Lỗi: " . $e->getMessage();
+        } finally {
+            $conn = null;
+        }
+    } else {
+        echo "<p>Kết nối đến cơ sở dữ liệu thất bại.</p>";
+    }
+}
 ?>
 
 

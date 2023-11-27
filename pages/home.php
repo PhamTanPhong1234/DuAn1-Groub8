@@ -10,7 +10,7 @@
             <div class="col-xl-4 col-lg-12">
                 <div class="news__module-booking-text">
                     <div class="section-title section-title-left">
-                        <h2>EVENT AND SHOW</h2>
+                        <h2>EVENT AND SHOW </h2>
                     </div>
                     <div class="item-des">
                         <p>Exciting events & shows at Hangug - Chic & sophisticated rooftop space with breath-taking, panoramic city views. And Enjoying live musical performances by “Sky Jazz” to create a relaxed atmosphere and comfortable environment.</p>

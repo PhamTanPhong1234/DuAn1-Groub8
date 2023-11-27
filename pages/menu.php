@@ -1,7 +1,9 @@
 <?php
-
+session_start();
 
 $conn = connect_db();
+
+$username = $_SESSION["username"];
 
 $sql = "SELECT * FROM products";
 echo $sql; // Thêm lệnh debug
@@ -19,6 +21,7 @@ if ($result->num_rows > 0) {
 }else {
     echo "Không có dữ liệu trả về từ truy vấn!";
 }
+
 
 $conn->close();
 ?>
@@ -168,7 +171,7 @@ button:hover {
 
     <div class="section-titles wow fadeInDown text-center" style="visibility: visible; animation-name: fadeInDown;">
         <h2>
-            Bạn muốn ăn gì?
+            Bạn muốn ăn gì? <?php echo $username ?>
         </h2>
         <span class="section-title-border text-center">
             <img src="//theme.hstatic.net/1000093072/1001049829/14/title_border.png?v=162" alt="title border">
@@ -187,9 +190,20 @@ button:hover {
                 echo '<img src="' . $item['productImage'] . '" alt="' . $item['productName'] . '">';
                 echo '<div class="product-info">';
                 echo '<h2>' . $item['productName'] . '</h2>';
+                echo '<h2 style="display:none;">' . $item['id'] . '</h2>';
                 echo '<p>Mô tả món ăn và thông tin khác...</p>';
                 echo '<p>Giá: $' . $item['productPrice'] . ' VNĐ</p>';
-                echo '<button onclick="addToCart(\'' . $item['productName'] . '\', ' . $item['productPrice'] . ')">Thêm vào giỏ hàng</button>';
+
+
+                echo '<form method="post" action="./pages/process_add_to_cart.php">';
+                echo '<input type="hidden" name="productId" value="' . $item['id'] . '">';
+                echo '<input type="hidden" name="productName" value="' . $item['productName'] . '">';
+                echo '<input type="hidden" name="productPrice" value="' . $item['productPrice'] . '">';
+                echo '<input type="hidden" name="productImage" value="' . $item['productImage'] . '">';
+                echo '<input type="hidden" name="username" value="' . $username . '">';
+                echo '<button type="submit">Thêm vào giỏ hàng</button>';
+                echo '</form>';
+               
                 echo '</div></div>';
             }
 
