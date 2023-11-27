@@ -13,15 +13,13 @@ if ($conn->connect_error) {
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $product_sql = "DELETE FROM products WHERE id = $id";
     $userList_sql = "DELETE FROM users WHERE id = $id";
     //nếu thực hiện được câu lệnh
-    if ($conn->query($product_sql)) {
-        header("Location: index.php");
-    } else {
-    $userList_sql = "DELETE FROM users WHERE id = $id"; {
+    if ($conn->query($userList_sql)) {
         header("Location: user_list.php");
+    } else { 
+        echo 'lỗi';
     }
-}}
+}
 
 $conn->close();
