@@ -1,5 +1,4 @@
 <?php
-session_start();
 $severname = "127.0.0.1:3309
 ";
 $username = "root";
@@ -11,22 +10,24 @@ $conn = new mysqli($severname, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Kết nối không thành công: " . $conn->connect_error);
 }
-$message = '';
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $phone = $_POST["phone"];
-    $email = $_POST["email"];
-    $create_sql = "INSERT INTO users (username, password, phone , email) VALUES ('$username','$password','$phone','$email')";
-    $result = $conn->query($create_sql);
+$message = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $img_url = $_POST['url_img'];
+    $img_type = $_POST['choices'];
+    $img_note = $_POST['url_note'];
+    $img_sql = "INSERT INTO gallery (image_url, image_type, image_note) VALUES ('$img_url','$img_type','$img_note')";
+    if (empty($img_url)) {
+        $message = "Vui Lòng Nhập Url ảnh";
+    } else {
+        $img_result = $conn->query($img_sql);
+        $message = "Nhập Thành Công";
+    }
 }
 // chọn tất cả từ bảng product
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM gallery";
 $result = $conn->query($sql);
-
 // Khởi tạo mảng để lưu trữ dữ liệu
 $menuItems = array();
-
 // Kiểm tra kết quả truy vấn
 if ($result->num_rows > 0) {
     //tạo vòng lặp để xuất mảng menuItem
@@ -34,6 +35,9 @@ if ($result->num_rows > 0) {
         $menuItems[] = $row;
     }
 }
+
+
+
 
 $conn->close();
 ?>
@@ -162,6 +166,36 @@ $conn->close();
             border-bottom: 1px solid #FFD33A;
         }
 
+        form {
+            width: 90%;
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 33.33% 33.33% 33.33%;
+        }
+
+        form div {
+            width: 100%;
+        }
+
+        input[type="text"] {
+            width: 95%;
+            padding-left: 10px;
+            height: 40px;
+            margin: 1em 0;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 2px solid #000;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-radius: 5px;
+            border: 2px solid #23AD4A;
+        }
+
         label {
             font-weight: 600;
             font-size: 13px;
@@ -266,10 +300,9 @@ $conn->close();
         }
 
         td img {
-            width: 80px;
-            height: 80px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
-            border-radius: 50%;
         }
 
         td a {
@@ -286,70 +319,66 @@ $conn->close();
             background-color: #45a049;
         }
 
-        .return {
-            color: #000;
-            position: absolute;
-            top: 4%;
-            right: 5%;
-            padding: 0 12px;
-            /* điều chỉnh giảm hoặc tăng kích thước nút */
-            text-decoration: none;
-            background-color: #4CAF50;
-            /* màu nền */
-            color: white;
-            /* màu chữ */
-            border-radius: 5px;
-            /* bo góc */
-            transition: background-color 0.3s;
-        }
-
-        form {
-            position: absolute;
-            top: 5%;
-            z-index: 10;
-            right: 5%;
-            display: none;
-            width: 400px;
-            ;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: rgb(255, 211, 58);
-            border-radius: 8px;
-            box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo img {
-            max-width: 100%;
-            height: auto;
+        #enter {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 75%;
             display: block;
+            background-color: #000;
+        }
+
+        #enter .wrap {
+            width: 90%;
             margin: 0 auto;
         }
 
-        form .header {
-            text-align: center;
-            font-size: 28px;
-            color: #000;
+        #enter input[type='text'] {
+            margin-top: 2px;
+            width: 20%;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        #enter input[type='text']:focus {
+            color: red;
         }
 
-        input[type="submit"] {
-            background-color: #2196F3;
+
+        ::placeholder {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.3);
+        }
+
+        #enter input[type='submit'] {
+            width: 150px;
+            height: 3em;
+            border-radius: 10px;
+            font-weight: 700;
             color: white;
-            border: none;
-            cursor: pointer;
+            border: 2px solid #23AD4A;
+            background-color: #23AD4A;
             transition: 0.2s;
+            cursor: pointer;
+            float: right;
         }
 
-        input[type="submit"]:hover {
-            background-color: #002D33;
+        #choices {
+            width: 200px;
+            padding: 6px;
+            font-size: 16px;
+            border-radius: 5px;
+
+        }
+
+        #choices option {
+            font-size: 14px;
+        }
+
+        #choices:hover {}
+
+        #choices:focus {
+            outline: none;
+            border-color: #72ACFC;
+            box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
         }
     </style>
 </head>
@@ -364,42 +393,23 @@ $conn->close();
         </div>
         <div class="list">
             <ul>
-            <li><a href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
+            <li ><a  href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
                 <li><a href="./order.php"><i class="fa-solid fa-cart-shopping"></i>Danh Sách Đơn Hàng</a></li>
                 <li><a href="./booking-table.php"><i class="fa-solid fa-chair"></i>Danh Sách Đặt Bàn</a></li>
-                <li><a href="./gallery_img.php"><i class="fa-solid fa-image"></i>Danh Sách Ảnh</a></li>
-                <li style="background-color: #FFD33A;"><a style="color: #000;" href="./user_list.php"><i class="fa-solid fa-user"></i>Danh Sách User</a></li>
+                <li style="background-color: #FFD33A;"><a style="color: #000;" href="./gallery_img.php"><i class="fa-solid fa-image"></i>Danh Sách Ảnh</a></li>
+                <li><a href="./user_list.php"><i class="fa-solid fa-user"></i>Danh Sách User</a></li>
             </ul>
         </div>
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
-        <a onclick="OpenFormCreateUser()" href='#' class='return'><i class='fa-solid fa-user'></i>&nbspTạo Người Dùng Mới</a>
-        <form form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <div class="logo"><img src="../images/Logohanquoc.png" alt=""></div>
-            <h1 class="header">Tạo Người Dùng</h1>
-            <input type="text" id="username" name="username" required placeholder="Tên Tài Khoản">
-            <input type="password" id="password" name="password" required placeholder="Mật Khẩu">
-            <br>
-            <input type="text" id="number" name="phone" required placeholder="Số Điện Thoại">
-            <br>
-            <input type="email" id="email" name="email" required placeholder="Email">
-            <br>
-            <input type="submit" value="Tạo">
-            <br>
-            <h4 style="color: red;"><?php echo $message; ?></h4>
-        </form>
-        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Người Dùng</h1>
+        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Thư Viện Ảnh</h1>
         <table>
-
             <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Tên Người Dùng</th>
-                    <th>Mật Khẩu</th>
-                    <th>Số Điện Thoại</th>
-                    <th>Email</th>
-                    <th>Chỉnh sửa</th>
+                <th>Hình Ảnh</th>
+                <th>Loại</th>
+                <th>Ghi chú</th>
+                <th>Chỉnh Sửa</th>
                 </tr>
             </thead>
             <tbody>
@@ -407,13 +417,13 @@ $conn->close();
                 $stt = 1;
                 foreach ($menuItems as $item) {
                     echo "<tr>";
-                    echo "<td>{$stt}</td>";
-                    echo "<td>{$item['username']}</td>";
-                    echo "<td> {$item['password']}</td>";
-                    echo "<td>{$item['phone']}</td>";
-                    echo "<td>{$item['email']}</td>";
+                    echo "<td><img src=" . $item['image_url'] . "></td>";
+                    echo "<td>" . $item['image_type'] . "</td>";
+                    echo "<td>" . $item['image_note'] . "</td>";
+
                     echo "<td>";
-                    echo " <a style='background-color:red;' href='deleteuser.php?id=" . $item['id'] . "'>Xóa</a> ";
+
+                    echo " <a style='background-color:red;' href='gallery_delete.php?id=" . $item['id'] . "'>Xóa</a> ";
                     echo "</td>";
                     echo "</tr>";
                     $stt++;
@@ -421,23 +431,26 @@ $conn->close();
                 ?>
             </tbody>
         </table>
+        <form id="enter" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
+            <div class="wrap"><span style="font-size: 15px; font-weight: bold;color: #fff;line-height: 50px;">THÊM ẢNH &nbsp &nbsp <span style="font-size: 12px; font-weight: bold;color: #FFD33A;line-height: 50px;margin: 10px 0;"><?php echo $message; ?></span></span><br>
+                <input type="text" name="url_img" id="url_img" placeholder="Nhập URL Ảnh ">
+
+                <select id="choices" name="choices">
+                    <option value="Food & Drink">Food & Drink</option>
+                    <option value="Vip & Cigar Room">Vip & Cigar Room</option>
+                    <option value="Restaurant & Lounge">Restaurant & Lounge</option>
+                </select>
+                <input type="text" name="url_note" id="url_note" placeholder="Ghi Chú" value='None'>
+
+                <input type="submit" value="Nhập">
+                <br><br>
+            </div>
+        </form>
         <!-- có thể thay đổi nội dung -->
-
     </div>
-
     <div class="logout">
         <a href="../../../indexAdmin.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
     </div>
-    <script>
-        function OpenFormCreateUser() {
-            let formCreateUser = document.querySelector('#main-content  form');
-            if (formCreateUser.style.display == "block") {
-                formCreateUser.style.display = "none"
-            } else {
-                formCreateUser.style.display = "block"
-            }
-        }
-    </script>
 </body>
 
 </html>

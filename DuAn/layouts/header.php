@@ -1,7 +1,5 @@
 <?php
     session_start();
-
-   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,8 +56,8 @@
                 <div class="col-xl-8 col-lg-7">
                     <nav class="header__menu">
                         <ul id="nav" class="nav">
-                            <li class="nav-item"><a class="nav-link" href="/duan/index.php?action=home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/duan/index.php?action=calendar">Calendar of event</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../../index.php?action=home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../../index.php?action=calendar">Calendar of event</a></li>
                             <li class="nav-item has-child">
                                 <a href="#" class="nav-link">Menu <i class="fa fa-angle-down" data-toggle="dropdown"></i></a>
                                 <ul class="dropdown-menu">
@@ -68,15 +66,15 @@
                                     </li> -->
 
                                     <li class="level1 parent nav-item">
-                                        <a href="/duan/index.php?action=menu" class="nav-link">Food &amp; Drink</a>
+                                        <a href="../../../index.php?action=menu" class="nav-link">Food &amp; Drink</a>
                                     </li>
 
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="/duan/index.php?action=news">News</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/duan/index.php?action=gallery">Gallery</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/duan/index.php?action=introduction">Introduction</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/duan/index.php?action=booking_contact">Booking &amp; Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../../index.php?action=news">News</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../../index.php?action=gallery">Gallery</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../../index.php?action=introduction">Introduction</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../../index.php?action=booking_contact">Booking &amp; Contact</a></li>
 
                         </ul>
                     </nav>

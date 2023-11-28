@@ -16,9 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newName = $_POST['new_name'];
     $newPrice = $_POST['new_price'];
     $newImage = $_POST['new_image'];
-    
     $sql = "UPDATE products SET productName='$newName', productPrice='$newPrice', productImage='$newImage' WHERE id=$id";
-    
     if ($conn->query($sql) === TRUE) {
         header("Location: index.php");
     } else {
