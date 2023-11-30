@@ -4,6 +4,8 @@ session_start();
 $user = $_SESSION["username"];
 $kqUser = 0;
 
+$maDsmon = $_GET['maDsmon'];
+
 function generateRandomString() {
     $prefix = "M";
     $suffix = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
@@ -32,12 +34,11 @@ if ($resulT->num_rows > 0) {
     $kqUser = 1;
 } 
 
-$sql = "SELECT * FROM gioHang WHERE maKHdat = '$user'";
+$sql = "SELECT * FROM dsMon WHERE maHang = '$maDsmon'";
 $result = $conn->query($sql);
 
 // Khởi tạo mảng để lưu trữ dữ liệu
 $menuItems = array();
-$menuItem = array();
 
 // Kiểm tra kết quả truy vấn
 if ($result->num_rows > 0) {
@@ -469,13 +470,10 @@ $conn->close();
                 <th>Tên Món</th>
                 <th>Giá</th>
                 <th>Số Lượng</th>
-                <th>Chỉnh sửa</th>
             </tr>
         </thead>
         <tbody>
-        <form id="orderFormCart" action="#" method="post" onsubmit="submitForm(event)">
         <?php
-                $totalAmount = 0;
                 $stt = 1;
                 foreach ($menuItems as $item) {
 
@@ -484,71 +482,16 @@ $conn->close();
                     echo "<td><img name='hinhAnh' src=".$item['hinhAnh']."></td>";
                     echo "<td>{$item['tenMon']}</td>";
                     echo "<td>{$item['giaTien']}đ</td>";
-                    echo "<td>";
-                    echo " <input type='number' class='quantity' name='quantity[]' data-id='{$item['id']}' data-price='{$item['giaTien']}' value='1' min='1'>";
-                    echo "</td>";
-                    echo "<td>";
-                    echo " <a class='cartDel' href='deleteCart.php?id=" . $item['id'] ."'>Xóa</a> ";
-                    echo "</td>";
-                    // echo "<td>";
-                    echo " <input type='hidden' name='maDonHang' value='$randomString' readonly>";
-                    // echo "</td>";
+                    echo "<td>{$item['quantity']}</td>";
                     echo "</tr>";
-
-                    $menuItem[] = [
-                        'stt' => $stt,
-                        'hinhAnh' => $item['hinhAnh'],
-                        'tenMon' => $item['tenMon'],
-                        'giaTien' => $item['giaTien'],
-                        'id' => $item['id'],
-                    ];
-        
-
-                    $totalAmount += floatval(str_replace('.', '', $item['giaTien']));
+                  
                     $stt++;
                 }
 
-                echo "<tr>";
-                echo "<td colspan='3'></td>";
-                echo "<td><strong>Tổng tiền</strong></td>";
-                echo "<td colspan='2'><span id='totalAmount'>" . number_format($totalAmount, 0, ',', '.') . "đ</span></td>";
-                echo "</tr>";
-               
                 ?>
         </tbody>
-    </table>
-    <input type="hidden" name="menuItem" value='<?php echo json_encode($menuItem); ?>'>
-
+      </table>
     
-    <button type="button" id="orderButton">Đặt Hàng</button>
-
-        <div id="orderForm" style="display: none;">
-        <!-- Các trường thông tin đặt hàng -->
-
-            <label for="totalAmount">Tổng Tiền:</label>
-            <input type="text" id="tongtien" name="totalAmount" value='<?php echo number_format($totalAmount, 0, ',', '.') ?>đ' readonly>
-
-            <label for="address">Địa Chỉ:</label>
-            <input type="text" id="address" name="address">
-
-            <label for="orderCode">Mã Đơn Hàng:</label>
-            <input type="text" id="orderCode" name="orderCode" value='<?php echo $randomString ?>' readonly>
-
-            <!-- Các trường ẩn để lưu trữ thông tin không hiển thị -->
-            <input type="hidden" id="customerName" name="customerName" value='<?php echo $user ?>' >
-            
-            <!-- Phương thức thanh toán (chỉ mô phỏng, bạn cần thay thế bằng giá trị thực) -->
-            <label for="paymentMethod">Phương Thức Thanh Toán:</label>
-            <select id="paymentMethod" name="paymentMethod">
-                <option value="cash">Tiền Mặt</option>
-                <option value="card">Thẻ Tín Dụng</option>
-            </select>
-           
-
-            <button type="submit" id="confirmOrderButton">Xác Nhận Đơn Hàng</button>
-</form>
-    
-    </div>
         <!-- có thể thay đổi nội dung -->
     </div>
     <div class="logout">
@@ -561,133 +504,14 @@ $conn->close();
             ?>
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-   function submitForm(event) {
-    event.preventDefault(); // Ngăn chặn form tự submit
-
-    // Lấy dữ liệu form
-    var formData = $('#orderFormCart').serialize();
-
-    // Gửi dữ liệu bằng Ajax
-    $.ajax({
-        type: 'POST',
-        url: 'Process.php', // Thay đổi đường dẫn tới file xử lý của bạn
-        data: formData,
-        success: function(response) {
-            // Xử lý response từ server (nếu cần)
-            console.log(response);
-            
-            // Hiển thị thông báo
-            showNotification('Đã thêm đơn hàng thành công!');
-        },
-        error: function(error) {
-            // Xử lý lỗi (nếu cần)
-            console.error(error);
-
-            // Hiển thị thông báo lỗi
-            showNotification('Đã xảy ra lỗi khi thêm đơn hàng.');
-        }
-    });
-}
-function showNotification(message) {
-    var notificationBar = document.getElementById('notificationBar');
-    notificationBar.innerText = message;
-
-    // Thêm class "show" để hiển thị thanh thông báo và kích hoạt animation
-    notificationBar.classList.add('show');
-
-    setTimeout(function () {
-        // Xóa class "show" sau khi hiệu ứng hoàn thành
-        notificationBar.classList.remove('show');
-    }, 3000); // Ẩn thanh thông báo sau 3 giây
-}
-
-
-</script>
-
+   
     
 
 
    
        
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var giaElements = document.querySelectorAll("#main-content tbody tr td:nth-child(4)");
-
-            giaElements.forEach(function (element) {
-                var gia = element.innerText;
-                var giaFormatted = parseFloat(gia.replace(/\./g, "")); // Chuyển chuỗi giá thành số và loại bỏ dấu chấm
-                var giaWithDot = giaFormatted.toLocaleString("vi-VN", { style: "currency", currency: "VND" }); // Format giá với dấu chấm
-                element.innerText = giaWithDot; // Cập nhật nội dung của ô giá
-            });
-
-            var quantityInputs = document.querySelectorAll('.quantity');
-            var totalAmountElement = document.getElementById('totalAmount');
-            var tongTienInput = document.getElementById('tongtien');
-            var quantityInput = document.getElementById('quantityCart');
-
-            quantityInputs.forEach(function (input) {
-                input.addEventListener('input', function () {
-                    updateTotalAmount();
-                });
-            });
-
-            function updateTotalAmount() {
-                var totalAmount = 0;
-
-                quantityInputs.forEach(function (input) {
-                    var quantity = input.value;
-                    var price = input.dataset.price;
-                    totalAmount += quantity * parseFloat(price.replace(/\./g, ''));
-                });
-
-                totalAmountElement.innerText = totalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-                tongTienInput.value = totalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }); // Cập nhật giá trị của input "tongtien"
-
-            }
-
-            var paymentButton = document.getElementById('paymentButton');
-
-            // paymentButton.addEventListener('click', function () {
-            //     var selectedDate = document.getElementById('date').value;
-            //     var selectedQuantity = quantityInput.value;
-            //     var selectedTotalAmount = tongTienInput.value;
-
-            //     // Thực hiện xử lý thanh toán ở đây
-            //     console.log('Ngày đặt:', selectedDate);
-            //     console.log('Số lượng khách:', selectedQuantity);
-            //     console.log('Tổng tiền:', selectedTotalAmount);
-            // });
-        });
-    </script>
-
-<script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var orderButton = document.getElementById('orderButton');
-            var orderForm = document.getElementById('orderForm');
-            var totalAmountElement = document.getElementById('totalAmount');
-            var confirmOrderButton = document.getElementById('confirmOrderButton');
-
-            orderButton.addEventListener('click', function () {
-                orderForm.style.display = 'block';
-                var totalAmount = totalAmountElement.innerText;
-                document.getElementById('totalAmount').value = totalAmount;
-            });
-
-            confirmOrderButton.addEventListener('click', function () {
-                var address = document.getElementById('address').value;
-                var paymentMethod = document.getElementById('paymentMethod').value;
-
-                console.log('Địa Chỉ:', address);
-                console.log('Phương Thức Thanh Toán:', paymentMethod);
-
-                orderForm.style.display = 'none';
-            });
-        });
-    </script>
-
+  
 
 
 </body>
