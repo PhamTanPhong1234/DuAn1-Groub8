@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,7 +89,7 @@
                     <div class="header__language">
 
                         <div class="header-login-cart" style="width: 100%; height:30px ; display: grid;grid-template-columns: 1fr 1fr 1fr; gap:15px;">
-                            <a class="" style="color: #fff;" href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a class="" style="color: #fff;" href="./layouts/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                             <a class="" style="color: #fff;" href="./layouts/login.php"><i class="fa-solid fa-user"></i></a>
                             <a class="" style="color: #fff;" href="./admin/pages/product/index.php"><i class="fa-solid fa-bars"></i></i></a>
                         </div>

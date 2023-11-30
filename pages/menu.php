@@ -192,7 +192,7 @@ button:hover {
                 echo '<h2>' . $item['productName'] . '</h2>';
                 echo '<h2 style="display:none;">' . $item['id'] . '</h2>';
                 echo '<p>Mô tả món ăn và thông tin khác...</p>';
-                echo '<p>Giá: $' . $item['productPrice'] . ' VNĐ</p>';
+                echo '<p>Giá: ' . $item['productPrice'] . ' VNĐ</p>';
 
 
                 echo '<form method="post" action="./pages/process_add_to_cart.php">';

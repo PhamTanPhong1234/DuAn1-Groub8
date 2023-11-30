@@ -1,4 +1,5 @@
 <?php
+session_start();
 $severname = "localhost";
 $username = "root";
 $password = "";
@@ -8,6 +9,15 @@ $conn = new mysqli($severname, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Kết nối không thành công: " . $conn->connect_error);
+}
+$message = '';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $phone = $_POST["phone"];
+    $email = $_POST["email"];
+    $create_sql = "INSERT INTO users (username, password, phone , email) VALUES ('$username','$password','$phone','$email')";
+    $result = $conn->query($create_sql);
 }
 // chọn tất cả từ bảng product
 $sql = "SELECT * FROM users";
@@ -128,6 +138,7 @@ $conn->close();
             height: 94vh;
             background-color: #F5F5F5;
             overflow: auto;
+            position: relative;
         }
 
         /* css chung */
@@ -150,35 +161,7 @@ $conn->close();
             border-bottom: 1px solid #FFD33A;
         }
 
-        form {
-            width: 90%;
-            margin-top: 40px;
-            margin-left: auto;
-            margin-right: auto;
-            display: grid;
-            grid-template-columns: 33.33% 33.33% 33.33%;
-        }
-
-        form div {
-            width: 100%;
-        }
-
-        input[type="text"] {
-            width: 95%;
-            padding-left: 10px;
-            height: 40px;
-            margin: 1em 0;
-            font-size: 1em;
-            border-radius: 5px;
-            border: 2px solid #000;
-            transition: 0.3s;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-radius: 5px;
-            border: 2px solid #23AD4A;
-        }
+        
 
         label {
             font-weight: 600;
@@ -303,6 +286,71 @@ $conn->close();
         td a:hover {
             background-color: #45a049;
         }
+        .return {
+            color: #000;
+            position: absolute;
+            top: 4%;
+            right: 5%;
+            padding: 0 12px;
+            /* điều chỉnh giảm hoặc tăng kích thước nút */
+            text-decoration: none;
+            background-color: #4CAF50;
+            /* màu nền */
+            color: white;
+            /* màu chữ */
+            border-radius: 5px;
+            /* bo góc */
+            transition: background-color 0.3s;
+        }
+
+        form {
+            position: absolute;
+            top: 5%;
+            z-index: 10;
+            right: 5%;
+            display: none;
+            width: 400px;
+            ;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgb(255, 211, 58);
+            border-radius: 8px;
+            box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        form .header {
+            text-align: center;
+            font-size: 28px;
+            color: #000;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #002D33;
+        }
     </style>
 </head>
 
@@ -316,17 +364,31 @@ $conn->close();
         </div>
         <div class="list">
             <ul>
-                <li ><a  href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
-                <li><a href="./addProduct.php"><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li>
-                <li><a href="./order.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
-                <li><a href="./booking-table.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
-                <!-- <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Ảnh</a></li> -->
-                <li style="background-color: #FFD33A;"><a style="color: #000;" href="./user_list.php"><i class="fa-solid fa-list"></i>Danh Sách User</a></li>
-            </ul>
+                <li><a href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
+                <li><a href="./order.php"><i class="fa-solid fa-cart-shopping"></i>Danh Sách Đơn Hàng</a></li>
+                <li><a href="./booking-table.php"><i class="fa-solid fa-chair"></i>Danh Sách Đặt Bàn</a></li>
+                <li><a href="./gallery_img.php"><i class="fa-solid fa-image"></i>Danh Sách Ảnh</a></li>
+                <li style="background-color: #FFD33A;"><a style="color: #000;" href="./user_list.php"><i class="fa-solid fa-user"></i>Danh Sách User</a></li>
+             </ul>
         </div>
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
+        <a onclick="OpenFormCreateUser()" href='#' class='return'><i class='fa-solid fa-user'></i>&nbspTạo Người Dùng Mới</a>
+        <form form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <div class="logo"><img src="../images/Logohanquoc.png" alt=""></div>
+            <h1 class="header">Tạo Người Dùng</h1>
+            <input type="text" id="username" name="username" required placeholder="Tên Tài Khoản">
+            <input type="password" id="password" name="password" required placeholder="Mật Khẩu">
+            <br>
+            <input type="text" id="number" name="phone" required placeholder="Số Điện Thoại">
+            <br>
+            <input type="email" id="email" name="email" required placeholder="Email">
+            <br>
+            <input type="submit" value="Tạo">
+            <br>
+            <h4 style="color: red;"><?php echo $message; ?></h4>
+        </form>
         <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Người Dùng</h1>
         <table>
 
@@ -362,6 +424,16 @@ $conn->close();
     <div class="logout">
         <a href="../../../indexAdmin.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
     </div>
+    <script>
+        function OpenFormCreateUser() {
+            let formCreateUser = document.querySelector('#main-content  form');
+            if (formCreateUser.style.display == "block") {
+                formCreateUser.style.display = "none"
+            } else {
+                formCreateUser.style.display = "block"
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -232,10 +232,10 @@ if ($conn->connect_error) {
         <div class="list">
             <ul>
                 <li style="background-color: #FFD33A;"><a style="color: #000;" href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
-                <li><a href="./addProduct.php"><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li>
+                <!-- <li><a href="./addProduct.php"><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li> -->
                 <li><a href="./order.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
                 <li><a href="./booking-table.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
-                <!-- <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Ảnh</a></li> -->
+                <li><a href="./gallery_img.php"><i class="fa-solid fa-list"></i></i>Danh Sách Ảnh</a></li>
                 <li><a href="./user_list.php"><i class="fa-solid fa-list"></i>Danh Sách User</a></li>
             </ul>
         </div>

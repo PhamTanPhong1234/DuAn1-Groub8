@@ -2,9 +2,18 @@
 session_start();
 
 $user = $_SESSION["username"];
+$kqUser = 0;
 
+function generateRandomString() {
+    $prefix = "M";
+    $suffix = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
+    return $prefix . $suffix;
+}
 
+// Sử dụng hàm để tạo chuỗi ngẫu nhiên
+$randomString = generateRandomString();
 
+// 
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -15,6 +24,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Kết nối không thành công: " . $conn->connect_error);
 }
+
+
+$sqlUser = "SELECT * FROM admin WHERE username = '$user'";
+$resulT = $conn->query($sqlUser);
+
+if ($resulT->num_rows > 0) {
+    $kqUser = 1;
+} 
 
 $sql = "SELECT * FROM gioHang WHERE maKHdat = '$user'";
 $result = $conn->query($sql);
@@ -271,7 +288,7 @@ $conn->close();
             position: absolute;
             top: -18px;
             right: 0;
-            width: 30px;
+            width: 36px;
             height: 30px;
             text-align: center;
             cursor: pointer;
@@ -324,6 +341,67 @@ $conn->close();
         }
 
         button:hover {
+            background-color: #45a049;
+        }
+        /*  */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #orderForm {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        #orderForm label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        #orderForm input,
+        #orderForm select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #orderForm button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #orderForm button:hover {
+            background-color: #45a049;
+        }
+
+        #orderButton {
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #orderButton:hover {
             background-color: #45a049;
         }
     </style>
@@ -387,33 +465,49 @@ $conn->close();
                 ?>
         </tbody>
     </table>
+    <button id="orderButton">Đặt Hàng</button>
+
+    <div id="orderForm" style="display: none;">
+    <!-- Các trường thông tin đặt hàng -->
+    <form id="orderInfoForm" action="process_order.php" method="post">
+        <label for="totalAmount">Tổng Tiền:</label>
+        <input type="text" id="tongtien" name="totalAmount" value='<?php echo number_format($totalAmount, 0, ',', '.') ?>đ' readonly>
+
+        <label for="address">Địa Chỉ:</label>
+        <input type="text" id="address" name="address">
+
+        <label for="orderCode">Mã Đơn Hàng:</label>
+        <input type="text" id="orderCode" name="orderCode" readonly>
+
+        <!-- Các trường ẩn để lưu trữ thông tin không hiển thị -->
+        <input type="hidden" id="customerName" name="customerName">
+        
+        <!-- Phương thức thanh toán (chỉ mô phỏng, bạn cần thay thế bằng giá trị thực) -->
+        <label for="paymentMethod">Phương Thức Thanh Toán:</label>
+        <select id="paymentMethod" name="paymentMethod">
+            <option value="cash">Tiền Mặt</option>
+            <option value="card">Thẻ Tín Dụng</option>
+        </select>
+
+        <button type="button" id="confirmOrderButton">Xác Nhận Đơn Hàng</button>
+    </form>
+</div>
         <!-- có thể thay đổi nội dung -->
     </div>
     <div class="logout">
-        <a href="../index.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
+            <?php
+                if($kqUser==1) {
+                    echo '<a href="../indexAdmin.php"><i class="fa-solid fa-house"></i></a>';
+                } else if($kqUser==0) {
+                    echo '<a href="../index.php"><i class="fa-solid fa-house"></i></a>';
+                }
+            ?>
+
     </div>
     
 
 
-    <form method="post" action="process_payment.php">
-        <div class='tongCar'>
-                <label for='tongtien'>Tổng tiền:</label>
-                <input type='text' id='tongtien' name='tongtien' min='1' value='<?php echo number_format($totalAmount, 0, ',', '.') ?>đ' readonly>
-                <label for='quantity'>Số lượng khách:</label>
-                <input type='number' id='quantityCart' name='quantityCart' min='1'>
-
-                <label for='date'>Ngày đặt:</label>
-                <input type='date' id='date' name='date'>
-
-                <input type="hidden" name="totalAmount" value="<?php echo $totalAmount; ?>">
-                <input type="hidden" name="quantityC" value="<?php echo $selectedQuantity; ?>">
-                <input type="hidden" name="selectedDate" value="<?php echo $selectedDate; ?>">
-                <input type="hidden" name="userNamee" value="<?php echo $user; ?>">
-
-                <button type="submit" id="paymentButton" name="submitPayment">Thanh toán</button>
-
-            </div>
-    </form>
+   
        
 
     <script>
@@ -467,7 +561,30 @@ $conn->close();
         });
     </script>
 
-   
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var orderButton = document.getElementById('orderButton');
+            var orderForm = document.getElementById('orderForm');
+            var totalAmountElement = document.getElementById('totalAmount');
+            var confirmOrderButton = document.getElementById('confirmOrderButton');
+
+            orderButton.addEventListener('click', function () {
+                orderForm.style.display = 'block';
+                var totalAmount = totalAmountElement.innerText;
+                document.getElementById('totalAmount').value = totalAmount;
+            });
+
+            confirmOrderButton.addEventListener('click', function () {
+                var address = document.getElementById('address').value;
+                var paymentMethod = document.getElementById('paymentMethod').value;
+
+                console.log('Địa Chỉ:', address);
+                console.log('Phương Thức Thanh Toán:', paymentMethod);
+
+                orderForm.style.display = 'none';
+            });
+        });
+    </script>
 
 
 

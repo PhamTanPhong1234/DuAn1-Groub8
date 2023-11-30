@@ -9,6 +9,15 @@ $conn = new mysqli($severname, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Kết nối không thành công: " . $conn->connect_error);
 }
+
+$message = '';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name = $_POST['name'];
+    $price= $_POST['price'];
+    $url = $_POST['url'];
+    $create_sql = "INSERT INTO products (productName,productPrice ,productImage ) VALUES ('$name','$price','$url')";
+    $result = $conn->query($create_sql);
+}
 // chọn tất cả từ bảng product
 $sql = "SELECT * FROM products";
 $result = $conn->query($sql);
@@ -142,6 +151,7 @@ $conn->close();
             border-radius: 7px;
             box-shadow: 2px 2px 2px 2px #ccc;
             padding: 0 10px;
+            position: relative;
         }
 
         #main-content .add-product-title .main-title {
@@ -150,7 +160,7 @@ $conn->close();
             border-bottom: 1px solid #FFD33A;
         }
 
-        form {
+        /* form {
             width: 90%;
             margin-top: 40px;
             margin-left: auto;
@@ -217,7 +227,7 @@ $conn->close();
             align-items: center;
             justify-content: center;
 
-        }
+        } */
 
         #submit {
             float: right;
@@ -303,6 +313,71 @@ $conn->close();
         td a:hover {
             background-color: #45a049;
         }
+        .return {
+            color: #000;
+            position: absolute;
+            top: 10%;
+            right: 3.8%;
+            padding: 0 12px;
+            /* điều chỉnh giảm hoặc tăng kích thước nút */
+            text-decoration: none;
+            background-color: #4CAF50;
+            /* màu nền */
+            color: white;
+            /* màu chữ */
+            border-radius: 5px;
+            /* bo góc */
+            transition: background-color 0.3s;
+        }
+
+        form {
+            position: absolute;
+            top: 11%;
+            z-index: 10;
+            right: 3.8%;
+            display: none;
+            width: 400px;
+            ;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgb(255, 211, 58);
+            border-radius: 8px;
+            box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        form .header {
+            text-align: center;
+            font-size: 28px;
+            color: #000;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #002D33;
+        }
     </style>
 </head>
 
@@ -317,16 +392,30 @@ $conn->close();
         <div class="list">
             <ul>
                 <li style="background-color: #FFD33A;"><a style="color: #000;" href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
-                <li><a href="./addProduct.php"><i class="fa-solid fa-square-plus"></i>Thêm Món Ăn</a></li>
-                <li><a href="./order.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đơn Hàng</a></li>
-                <li><a href="./booking-table.php"><i class="fa-solid fa-list"></i></i>Danh Sách Đặt Bàn</a></li>
-                <!-- <li><a href=""><i class="fa-solid fa-list"></i></i>Danh Sách Ảnh</a></li> -->
-                <li><a href="./user_list.php"><i class="fa-solid fa-list"></i>Danh Sách User</a></li>
+                <li><a href="./order.php"><i class="fa-solid fa-cart-shopping"></i>Danh Sách Đơn Hàng</a></li>
+                <li><a href="./booking-table.php"><i class="fa-solid fa-chair"></i>Danh Sách Đặt Bàn</a></li>
+                <li><a href="./gallery_img.php"><i class="fa-solid fa-image"></i>Danh Sách Ảnh</a></li>
+                <li><a href="./user_list.php"><i class="fa-solid fa-user"></i>Danh Sách User</a></li>
             </ul>
         </div>
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
+        <a onclick="OpenFormCreateUser()" href='#' class='return'><i class='fa-solid fa-square-plus'></i>&nbspThêm Món Ăn</a>
+        <form form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <div class="logo"><img src="../images/Logohanquoc.png" alt=""></div>
+            <h1 class="header">Thêm Món</h1>
+            <input type="text" id="name" name="name" required placeholder="Tên Món">
+            <input type="text" id="price" name="price" required placeholder="Giá tiền">
+            <br>
+            <input type="text" id="quantity" name="quantity" required placeholder="Số Lượng">
+            <br>
+            <input type="text" id="url" name="url" required placeholder="URL Ảnh (3X4)">
+            <br>
+            <input type="submit" value="Tạo">
+            <br>
+            <h4 style="color: red;"><?php echo $message; ?></h4>
+        </form>
         <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Món Ăn</h1>
         <table>
             <thead>
@@ -367,6 +456,16 @@ $conn->close();
     <div class="logout">
         <a href="../../../indexAdmin.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
     </div>
+    <script>
+        function OpenFormCreateUser() {
+            let formCreateUser = document.querySelector('#main-content  form');
+            if (formCreateUser.style.display == "block") {
+                formCreateUser.style.display = "none"
+            } else {
+                formCreateUser.style.display = "block"
+            }
+        }
+    </script>
 </body>
 
 </html>
