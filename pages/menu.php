@@ -34,6 +34,8 @@ $conn->close();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
     <style>
         .section-titles {
@@ -157,10 +159,93 @@ $conn->close();
 button:hover {
     opacity:0.7;
 }
+/*  */
+
+
+
+#toast {
+    position: fixed;
+    top: 10px;
+    right: 5px;
+    z-index: 99999;
+}
+
+.toasts {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 5px 0;
+    min-width: 400px;
+    max-width: 450px;
+    border-left: 4px solid #47d864;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    transition: all linear 0.5s;
+    margin-bottom: 10px;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(calc(100% + 32px));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+  .toast__icon {
+    font-size: 20px;
+
+
+  }
+
+  .toast--success {
+    border-color: #47d864;
+  }
+  
+  .toast--success .toast__icon {
+    color: #47d864;
+  }
+  
+  .toast--info {
+    border-color: red;
+  }
+  
+  .toast--info .toast__icon {
+    color: red;
+  }
+  
+  .toast__icon,
+  .toast__close {
+    padding: 0 16px;
+  }
+  .toast__body {
+    flex-grow: 1;
+  }
+  .toast__msg {
+    font-size: 14px;
+    color: #888;
+    margin: 10px;
+    line-height: 1.5;
+  }
+
+  .toast__close {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
 
     </style>
 </head>
 <body>
+<div id="toast"></div>
 
     <section class="bread-crumb has-bg">
         <div class="overlay"></div>
@@ -171,7 +256,7 @@ button:hover {
 
     <div class="section-titles wow fadeInDown text-center" style="visibility: visible; animation-name: fadeInDown;">
         <h2>
-            Bạn muốn ăn gì? <?php echo $username ?>
+            Bạn muốn ăn gì? 
         </h2>
         <span class="section-title-border text-center">
             <img src="//theme.hstatic.net/1000093072/1001049829/14/title_border.png?v=162" alt="title border">
@@ -195,7 +280,7 @@ button:hover {
                 echo '<p>Giá: ' . $item['productPrice'] . ' VNĐ</p>';
 
 
-                echo '<form method="post" action="./pages/process_add_to_cart.php">';
+                echo '<form class="add-to-cart-form" method="post" action="./pages/process_add_to_cart.php">';
                 echo '<input type="hidden" name="productId" value="' . $item['id'] . '">';
                 echo '<input type="hidden" name="productName" value="' . $item['productName'] . '">';
                 echo '<input type="hidden" name="productPrice" value="' . $item['productPrice'] . '">';
@@ -238,6 +323,95 @@ button:hover {
             const buttonText = hiddenProducts.length > 0 ? 'Hiển thị thêm' : 'Ẩn bớt';
             button.innerText = buttonText;
         }
+    </script>
+
+
+<script>
+$(document).ready(function() {
+    $('.add-to-cart-form').submit(function(e) {
+        // Ngăn chặn gửi form mặc định
+        e.preventDefault();
+
+        // Lấy dữ liệu từ form
+        var formData = $(this).serialize();
+
+        // Gửi Ajax request
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: formData,
+            success: function(response) {
+                // Xử lý kết quả thành công
+                console.log(response);
+
+
+                toast({
+                    message: "Đã thêm giỏ hàng thành công.",
+                    type: "success",
+                    duration: 3000
+                });
+                
+            },
+            error: function(error) {
+                // Xử lý lỗi
+                console.error(error);
+
+                // Hiển thị thông báo lỗi
+                toast({
+                    message: "Đã xảy ra lỗi khi thêm đơn hàng.",
+                    type: "info",
+                    duration: 3000
+                });
+            }
+        });
+    });
+});
+</script>
+
+<script>
+        function toast({  message = "", type = "info", duration = 3000 }) {
+    const main = document.getElementById("toast");
+    if (main) {
+      const toast = document.createElement("div");
+  
+      // Auto remove toast
+      const autoRemoveId = setTimeout(function () {
+        main.removeChild(toast);
+      }, duration + 2000);
+  
+      // Remove toast when clicked
+      toast.onclick = function (e) {
+        if (e.target.closest(".toast__close")) {
+          main.removeChild(toast);
+          clearTimeout(autoRemoveId);
+        }
+      };
+  
+      const icons = {
+        success: "fa-solid fa-cart-shopping",
+        info: "fas fa-info-circle"
+
+      };
+      const icon = icons[type];
+      const delay = (duration / 1000).toFixed(2);
+  
+      toast.classList.add("toasts", `toast--${type}`);
+      toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
+  
+      toast.innerHTML = `
+                      <div class="toast__icon">
+                          <i class="${icon}"></i>
+                      </div>
+                      <div class="toast__body">
+                          <p class="toast__msg">${message}</p>
+                      </div>
+                      <div class="toast__close">
+                          <i class="fas fa-times"></i>
+                      </div>
+                  `;
+      main.appendChild(toast);
+    }
+  }
     </script>
 </body>
 </html>

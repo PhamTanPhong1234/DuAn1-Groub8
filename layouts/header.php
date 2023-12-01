@@ -24,7 +24,7 @@
         .bread-crumb {
             background-image: url(https://bizmansky.vn/image/cache/catalog/background/Thumbnail-1920x0.png);
             padding: 140px 0;
-            margin-top: 95px;
+            margin-top:77px;
         }
        .header-login-cart a i:hover{
         color: #CC9902;
@@ -96,16 +96,16 @@
                             <a class="showClient" style="color: #fff;" href="./layouts/login.php"><i class="fa-solid fa-user"></i>
                         
                             <div class="client" style="
-    display: none; 
-    color: black;
-    background-color: white;
-    border-radius: 5px;
-    position: absolute;
-    font-size: 14px;
-    width: max-content;
-    bottom: -15px;
-    right: 0px;
-">Chào bạn </div>                        </a>
+                                display: none; 
+                                color: black;
+                                background-color: white;
+                                border-radius: 5px;
+                                position: absolute;
+                                font-size: 14px;
+                                width: max-content;
+                                bottom: -15px;
+                                right: 0px;
+                            ">Chào bạn </div> </a>
                             
                         </div>
 
@@ -113,12 +113,12 @@
                             <form action="https://bizmansky.vn/common/language/language" method="post" enctype="multipart/form-data" id="form-language" class="form-language">
                                 <ul>
                                     <li class="active">
-                                        <button class="btn btn-link btn-block language-select" type="button" name="en-gb">
+                                        <button style="margin:0px;" class="btn btn-link btn-block language-select" type="button" name="en-gb">
                                             EN </button>
                                     </li>
                                     <li class="devide">|</li>
                                     <li class="">
-                                        <button class="btn btn-link btn-block language-select" type="button" name="vi-vn">
+                                        <button style="margin:0px;" class="btn btn-link btn-block language-select" type="button" name="vi-vn">
                                             VN </button>
                                     </li>
                                 </ul>

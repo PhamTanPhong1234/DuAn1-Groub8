@@ -7,6 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://kit.fontawesome.com/c13a07f3cd.js" crossorigin="anonymous"></script>
+
+
  
     <style>
 
@@ -165,10 +172,94 @@ label {
             padding: 4px;
             cursor: pointer;
         }
+        /*  */
+
+
+
+#toast {
+    position: fixed;
+    top: 10px;
+    right: 5px;
+    z-index: 99999;
+}
+
+.toasts {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 5px 0;
+    min-width: 400px;
+    max-width: 450px;
+    border-left: 4px solid #47d864;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    transition: all linear 0.5s;
+    margin-bottom: 10px;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(calc(100% + 32px));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+  .toast__icon {
+    font-size: 20px;
+
+
+  }
+
+  .toast--success {
+    border-color: #47d864;
+  }
+  
+  .toast--success .toast__icon {
+    color: #47d864;
+  }
+  
+  .toast--info {
+    border-color: red;
+  }
+  
+  .toast--info .toast__icon {
+    color: red;
+  }
+  
+  .toast__icon,
+  .toast__close {
+    padding: 0 16px;
+  }
+  .toast__body {
+    flex-grow: 1;
+  }
+  .toast__msg {
+    font-size: 14px;
+    color: #888;
+    margin: 10px;
+    line-height: 1.5;
+  }
+
+  .toast__close {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
     </style>
     
 </head>
 <body>
+<div id="toast"></div>
+
     <section class="bread-crumb has-bg">
         <div class="overlay"></div>
         <div class="breadcrumb-container text-center">
@@ -230,7 +321,7 @@ label {
                         <div class="contact-form">
 
                         <div class="fancybox_0 wrapper-newsletter contact_newsletter newsletter" id="contact_newsletter">    
-    <form class="form-newsletter" id="form-newsletter-0" method="post" action="./pages/process-data.php">
+    <form class="form-newsletter" id="form-bookingForm-0" method="post" action="./pages/process-data.php">
         <div class="section-title form-newsletter__heading m-0">
             <h2>Book a table</h2>
         </div>
@@ -255,6 +346,16 @@ label {
                                                             <div class="col-12">
                                     <input type="text" class="form-control email " name="email" placeholder="Email">
                                 </div>
+                                <div class="col-12">
+                                    <label for="foodSelection">Chọn thực đơn:</label>
+                                    <select class="form-control" id="foodSelection" name="foodSelection">
+                                        <option value="monTuChon">Combo các món Ý</option>
+                                        <option value="combo1">Combo hải sản</option>
+                                        <option value="combo2">Combo bò hầm sâm</option>
+                                        <option value="combo3">Tự chọn món ở nhà hàng</option>
+                                    </select>
+                                </div>
+
                             
                             
                                                     </div>
@@ -286,7 +387,7 @@ label {
                                                                                                             </div>
                         <span class="form-newsletter__notification"></span>
                         <div class="btn-action text-left">
-                            <button type="submit" name="submitNewsletter" class="btn btn-submit bizman-button" >Book now</button>
+                        <button type="submit" id="submitBtn" class="btn btn-submit bizman-button">Book now</button>
                         </div>
                     </div>
                 </div>
@@ -329,6 +430,103 @@ label {
         </li>
     </ul>   
 </div>
+
+<script>
+        function toast({  message = "", type = "info", duration = 3000 }) {
+    const main = document.getElementById("toast");
+    if (main) {
+      const toast = document.createElement("div");
+  
+      // Auto remove toast
+      const autoRemoveId = setTimeout(function () {
+        main.removeChild(toast);
+      }, duration + 2000);
+  
+      // Remove toast when clicked
+      toast.onclick = function (e) {
+        if (e.target.closest(".toast__close")) {
+          main.removeChild(toast);
+          clearTimeout(autoRemoveId);
+        }
+      };
+  
+      const icons = {
+        success: "fa-solid fa-cart-shopping",
+        info: "fas fa-info-circle"
+
+      };
+      const icon = icons[type];
+      const delay = (duration / 1000).toFixed(2);
+  
+      toast.classList.add("toasts", `toast--${type}`);
+      toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
+  
+      toast.innerHTML = `
+                      <div class="toast__icon">
+                          <i class="${icon}"></i>
+                      </div>
+                      <div class="toast__body">
+                          <p class="toast__msg">${message}</p>
+                      </div>
+                      <div class="toast__close">
+                          <i class="fas fa-times"></i>
+                      </div>
+                  `;
+      main.appendChild(toast);
+    }
+  }
+    </script>
+<script>
+    // Bắt đầu xử lý khi trang đã được tải
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy đối tượng form
+        var form = document.getElementById("form-bookingForm-0");
+
+        // Bắt đầu nghe sự kiện submit của form
+        form.addEventListener("submit", function (event) {
+            // Ngăn chặn hành động mặc định của form (tự động load lại trang)
+            event.preventDefault();
+
+            // Lấy dữ liệu form
+            var formData = new FormData(form);
+
+            // Gửi POST request bằng Ajax
+            fetch('./pages/process-data.php', {
+                method: 'POST',
+                body: formData
+            })
+            // .then(response => response.text()) // Chuyển đổi response thành JSON (nếu server trả về JSON)
+            .then(data => {
+                // Xử lý kết quả từ server
+                console.log(data);
+
+                // Hiển thị thông báo
+                toast({
+                    message: "Đã thêm giỏ hàng thành công.",
+                    type: "success",
+                    duration: 3000
+                });
+                resetFormFields();
+            })
+            .catch(error => {
+                // Xử lý lỗi
+                console.error(error);
+
+                // Hiển thị thông báo lỗi
+                toast({
+                    message: "Đã xảy ra lỗi khi thêm đơn hàng.",
+                    type: "info",
+                    duration: 3000
+                });
+            });
+        });
+    });
+
+    function resetFormFields() {
+    document.getElementById("form-bookingForm-0").reset();
+}
+</script>
+
 
 
 </body>

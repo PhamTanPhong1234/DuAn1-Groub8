@@ -334,6 +334,7 @@ if ($result->num_rows > 0) {
                     <th>Tên Khách Đặt Bàn</th>
                     <th>Số Điện Thoại</th>
                     <th>Email</th>
+                    <th>Lựa Chọn</th>
                     <th>Số Khách</th>
                     <th>Ngày Đặt</th>
                     <th>Thời Gian Đặt</th>
@@ -349,6 +350,7 @@ if ($result->num_rows > 0) {
                     echo "<td>{$item['names']}</td>";
                     echo "<td>{$item['phone']}</td>";
                     echo "<td>{$item['email']}</td>";
+                    echo "<td>{$item['luaChon']}</td>";
                     echo "<td>{$item['soluongKhach']}</td>";
                     echo "<td>{$item['ngayDat']}</td>";
                     echo "<td>{$item['times']}</td>";

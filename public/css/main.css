@@ -1337,3 +1337,10 @@ ul.tabs li.current span{
   }
 }
 
+.logoutUser {
+  position: fixed;
+  bottom : 15px;
+  right:15px;
+  color:white;
+  cursor: pointer;
+}

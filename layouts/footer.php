@@ -1,3 +1,6 @@
+<div class="logoutUser">
+        <a href="./layouts/logout.php"> <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i></a>
+</div>
 <footer class="footer">
     <div class="container">
         <div class="row">

@@ -461,7 +461,15 @@ $conn->close();
                             echo "<td>{$item['Dchi']}</td>";
                             echo "<td> <a class='view-detail' data-maDsmon='{$item['maDsmon']}' href='view_detail.php?maDsmon={$item['maDsmon']}'>Xem Chi Tiết</a> </td>";
                             echo "<td>{$item['tongTien']}</td>";
-                            echo "<td style='color:red;'> Đang chuẩn Bị</td>";
+                            echo "<td>";
+
+                            if ($item['trangThai'] == 1) {
+                                echo "Xong";
+                            } else {
+                                echo "<span style='color:red;'>Đang chuẩn bị</span>";
+                            }
+                        
+                            echo "</td>";
                             echo "</tr>";
                         }
                 ?>

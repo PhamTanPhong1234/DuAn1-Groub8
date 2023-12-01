@@ -10,13 +10,13 @@ if ($conn->connect_error) {
     die("Kết nối không thành công: " . $conn->connect_error);
 }
 // chọn tất cả từ bảng product
-$sql = "SELECT * FROM donhang";
+
+$sql = "SELECT * FROM donOnline";
 $result = $conn->query($sql);
 
-// Khởi tạo mảng để lưu trữ dữ liệu
+
 $menuItems = array();
 
-// Kiểm tra kết quả truy vấn
 if ($result->num_rows > 0) {
     //tạo vòng lặp để xuất mảng menuItem
     while ($row = $result->fetch_assoc()) {
@@ -24,7 +24,7 @@ if ($result->num_rows > 0) {
     }
 }
 
-// $conn->close();
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +39,8 @@ if ($result->num_rows > 0) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c13a07f3cd.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <style>
         /* css chung */
         * {
@@ -149,7 +151,7 @@ if ($result->num_rows > 0) {
             padding: 10px;
             border-bottom: 1px solid #FFD33A;
         }
-
+/* 
         form {
             width: 90%;
             margin-top: 40px;
@@ -157,7 +159,7 @@ if ($result->num_rows > 0) {
             margin-right: auto;
             display: grid;
             grid-template-columns: 33.33% 33.33% 33.33%;
-        }
+        } */
 
         form div {
             width: 100%;
@@ -219,7 +221,7 @@ if ($result->num_rows > 0) {
 
         }
 
-        #submit {
+        /* #submit {
             float: right;
             margin-top: 15px;
             margin-right: 10px;
@@ -238,7 +240,7 @@ if ($result->num_rows > 0) {
         #submit:hover {
             background-color: transparent;
             color: #23AD4A;
-        }
+        } */
 
         .logout {
             position: absolute;
@@ -303,10 +305,129 @@ if ($result->num_rows > 0) {
         td a:hover {
             background-color: #45a049;
         }
+        /*  */
+
+        #submit {
+            width: auto;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #23AD4A;
+    border: 2px solid #23AD4A;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 15px auto;
+    display: block;
+}
+
+#submit:hover {
+    background-color: #1C8E3E;
+}
+
+/* Thêm một lớp mới cho ô select để chỉnh sửa kiểu */
+.trangThaiSelect {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Đặt kích thước chữ và màu sắc cho option trong select */
+.trangThaiSelect option {
+    font-size: 14px;
+    color: #000;
+}
+/*  */
+
+
+#toast {
+    position: fixed;
+    top: 10px;
+    right: 5px;
+    z-index: 999;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 5px 0;
+    min-width: 400px;
+    max-width: 450px;
+    border-left: 4px solid #47d864;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    transition: all linear 0.5s;
+    margin-bottom: 10px;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(calc(100% + 32px));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+  .toast__icon {
+    font-size: 20px;
+
+
+  }
+
+  .toast--success {
+    border-color: #47d864;
+  }
+  
+  .toast--success .toast__icon {
+    color: #47d864;
+  }
+  
+  .toast--info {
+    border-color: #47d864;
+  }
+  
+  .toast--info .toast__icon {
+    color: #47d864;
+  }
+  
+  .toast__icon,
+  .toast__close {
+    padding: 0 16px;
+  }
+  .toast__body {
+    flex-grow: 1;
+  }
+  .toast__msg {
+    font-size: 14px;
+    color: #888;
+    margin: 10px;
+    line-height: 1.5;
+  }
+
+  .toast__close {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
     </style>
 </head>
 
 <body>
+<div id="toast"></div>
+
     <div id="sitebar">
         <div class="admin-profile">
             <div class="img"><img src="/../images/mail.png" alt=""></div>
@@ -327,15 +448,18 @@ if ($result->num_rows > 0) {
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
         <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Đặt Hàng</h1>
+    <form method="POST" action="update_trangthai.php" id="updateForm">
+
         <table>
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Id Đơn Hàng</th>
+                    <th>ID Đơn Hàng</th>
                     <th>Tên Khách Hàng</th>
+                    <th>Địa Chỉ</th>
+                    <th>Danh Sách Món</th>
                     <th>Tổng Tiền</th>
-                    <th>Ngày Đặt</th>
-                    <th>Số Lượng Khách</th>
+                    <th>Trạng Tái Đơn Hàng</th>
                 </tr>
             </thead>
             <tbody>
@@ -344,23 +468,149 @@ if ($result->num_rows > 0) {
                 foreach ($menuItems as $item) {
                     echo "<tr>";
                     echo "<td>{$stt}</td>";
-                    echo "<td>{$item['idDonhang']}</td>";
-                    echo "<td>{$item['TenKh']}</td>";
+                    echo "<td>{$item['maDH']}</td>";
+                    echo "<td>{$item['tenKH']}</td>";
+                    echo "<td>{$item['Dchi']}</td>";
+                    echo "<td>{$item['maDsmon']}</td>";
                     echo "<td>{$item['tongTien']}</td>";
-                    echo "<td>{$item['ngayDat']}</td>";
-                    echo "<td>{$item['soKhach']}</td>";
-                    echo "<input type='text' hidden value = '" . $item['id']."'>";
-                    $stt++;
+                    echo "<td><select name='trangThai[]' class='trangThaiSelect'>";
+                    echo "<option value='0' " . ($item['trangThai'] == 0 ? 'selected' : '') . ">Đang chuẩn bị</option>";
+                    echo "<option value='1' " . ($item['trangThai'] == 1 ? 'selected' : '') . ">Đã xong</option>";
+                    echo "</select></td>";
+                    echo "<input type='hidden' name='maDH[]' value='{$item['maDH']}'>";
+                    $stt++;                  
                 }
                 ?>
             </tbody>
 
         </table>
+        <input type="submit" id="submit" value="Cập nhật trạng thái">
+    </form>
         <!-- có thể thay đổi nội dung -->
     </div>
     <div class="logout">
         <a href="../../../indexAdmin.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
     </div>
+    <script>
+$(document).ready(function () {
+    // Sự kiện nút submit được click
+    $('#updateForm').submit(function (event) {
+        // Ngăn chặn hành động mặc định của form (chặn việc load lại trang)
+        event.preventDefault();
+
+        // Lấy dữ liệu từ form
+        var formData = $(this).serialize();
+
+        // Gửi dữ liệu lên server bằng Ajax
+        $.ajax({
+            type: 'POST',
+            url: 'update_trangthai.php',
+            data: formData,
+            success: function (response) {
+                console.log(response); // In response từ server (có thể xóa dòng này sau khi đã kiểm tra)
+                // Có thể thêm các xử lý khác nếu cần
+                toast({
+                        message: "Đã chỉnh sửa thành công.",
+                        type: "success",
+                        duration: 3000
+                    });
+            },
+            error: function (error) {
+                console.error('Lỗi Ajax:', error);
+                toast({
+                        message: "Đã xảy ra lỗi khi chỉnh sửa.",
+                        type: "info",
+                        duration: 3000
+                    });
+            }
+        });
+    });
+
+    // Sự kiện thay đổi của trạng thái
+    $('select.trangThaiSelect').change(function () {
+        // Lấy giá trị mới
+        var trangThai = $(this).val();
+
+        // Lấy id của bản ghi
+        var maDH = $(this).siblings('input[type="hidden"]').val();
+
+        // Gửi dữ liệu lên server bằng Ajax
+        $.ajax({
+            type: 'POST',
+            url: 'update_trangthai.php',
+            data: {
+                trangThai: trangThai,
+                maDH: maDH
+            },
+            success: function (response) {
+                console.log(response); // In response từ server (có thể xóa dòng này sau khi đã kiểm tra)
+                // Có thể thêm các xử lý khác nếu cần
+                toast({
+                        message: "Hãy xác nhận cập nhật ở dưới.",
+                        type: "success",
+                        duration: 3000
+                    });
+            },
+            error: function (error) {
+                console.error('Lỗi Ajax:', error);
+                toast({
+                        message: "Đã xảy ra lỗi khi thêm đơn hàng.",
+                        type: "info",
+                        duration: 3000
+                    });
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+        function toast({  message = "", type = "info", duration = 3000 }) {
+    const main = document.getElementById("toast");
+    if (main) {
+      const toast = document.createElement("div");
+  
+      // Auto remove toast
+      const autoRemoveId = setTimeout(function () {
+        main.removeChild(toast);
+      }, duration + 1000);
+  
+      // Remove toast when clicked
+      toast.onclick = function (e) {
+        if (e.target.closest(".toast__close")) {
+          main.removeChild(toast);
+          clearTimeout(autoRemoveId);
+        }
+      };
+  
+      const icons = {
+        success: "fa-solid fa-cart-shopping",
+        info: "fas fa-info-circle"
+
+      };
+      const icon = icons[type];
+      const delay = (duration / 1000).toFixed(2);
+  
+      toast.classList.add("toast", `toast--${type}`);
+      toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
+  
+      toast.innerHTML = `
+                      <div class="toast__icon">
+                          <i class="${icon}"></i>
+                      </div>
+                      <div class="toast__body">
+                          <p class="toast__msg">${message}</p>
+                      </div>
+                      <div class="toast__close">
+                          <i class="fas fa-times"></i>
+                      </div>
+                  `;
+      main.appendChild(toast);
+    }
+  }
+    </script>
+
 </body>
 
 </html>
