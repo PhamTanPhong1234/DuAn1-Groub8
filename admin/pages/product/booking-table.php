@@ -321,6 +321,7 @@ if ($result->num_rows > 0) {
                 <li style="background-color: #FFD33A;"><a style="color: #000;" href="./booking-table.php"><i class="fa-solid fa-chair"></i>Danh Sách Đặt Bàn</a></li>
                 <li><a href="./gallery_img.php"><i class="fa-solid fa-image"></i>Danh Sách Ảnh</a></li>
                 <li><a href="./user_list.php"><i class="fa-solid fa-user"></i>Danh Sách User</a></li>
+                <li><a href="./thongKe.php"><i class="fa-solid fa-bars"></i>Thống Kê</a></li>
             </ul>
         </div>
     </div>
@@ -331,7 +332,8 @@ if ($result->num_rows > 0) {
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Tên Khách Đặt Bàn</th>
+                    <th style="
+    width: 200px;">Tên Khách Đặt Bàn</th>
                     <th>Số Điện Thoại</th>
                     <th>Email</th>
                     <th>Lựa Chọn</th>
@@ -364,7 +366,7 @@ if ($result->num_rows > 0) {
         <!-- có thể thay đổi nội dung -->
     </div>
     <div class="logout">
-        <a href="../../../indexAdmin.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
+        <a href="../../../indexAdmin.php"> <i class="fa-solid fa-house"></i></a>
     </div>
 </body>
 

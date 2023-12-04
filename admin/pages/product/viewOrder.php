@@ -1,25 +1,40 @@
 <?php
-$severname = "localhost";
+session_start();
+
+$user = $_SESSION["username"];
+$kqUser = 0;
+
+$maDsmon = $_GET['maDsmon'];
+
+function generateRandomString() {
+    $prefix = "M";
+    $suffix = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+    return $prefix . $suffix;
+}
+
+// Sử dụng hàm để tạo chuỗi ngẫu nhiên
+$randomString = generateRandomString();
+
+// // 
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "duan";
 
-$conn = new mysqli($severname, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Kết nối không thành công: " . $conn->connect_error);
 }
 
-$message = '';
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST['name'];
-    $price= $_POST['price'];
-    $url = $_POST['url'];
-    $create_sql = "INSERT INTO products (productName,productPrice ,productImage ) VALUES ('$name','$price','$url')";
-    $result = $conn->query($create_sql);
-}
-// chọn tất cả từ bảng product
-$sql = "SELECT * FROM products";
+$sqlUser = "SELECT * FROM admin WHERE username = '$user'";
+$resulT = $conn->query($sqlUser);
+
+if ($resulT->num_rows > 0) {
+    $kqUser = 1;
+} 
+
+$sql = "SELECT * FROM dsMon WHERE maHang = '$maDsmon'";
 $result = $conn->query($sql);
 
 // Khởi tạo mảng để lưu trữ dữ liệu
@@ -27,23 +42,24 @@ $menuItems = array();
 
 // Kiểm tra kết quả truy vấn
 if ($result->num_rows > 0) {
-    //tạo vòng lặp để xuất mảng menuItem
     while ($row = $result->fetch_assoc()) {
         $menuItems[] = $row;
     }
 }
 
+
+
+
 $conn->close();
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm Sản Phẩm</title>
-    <link rel="shortcut icon" href="../../images/favicon.png">
-
+    <title>Menu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
@@ -151,7 +167,6 @@ $conn->close();
             border-radius: 7px;
             box-shadow: 2px 2px 2px 2px #ccc;
             padding: 0 10px;
-            position: relative;
         }
 
         #main-content .add-product-title .main-title {
@@ -159,15 +174,15 @@ $conn->close();
             padding: 10px;
             border-bottom: 1px solid #FFD33A;
         }
-
-        /* form {
+/* 
+        form {
             width: 90%;
             margin-top: 40px;
             margin-left: auto;
             margin-right: auto;
             display: grid;
             grid-template-columns: 33.33% 33.33% 33.33%;
-        }
+        } */
 
         form div {
             width: 100%;
@@ -227,9 +242,9 @@ $conn->close();
             align-items: center;
             justify-content: center;
 
-        } */
+        }
 
-        #submit {
+        /* #submit {
             float: right;
             margin-top: 15px;
             margin-right: 10px;
@@ -248,7 +263,7 @@ $conn->close();
         #submit:hover {
             background-color: transparent;
             color: #23AD4A;
-        }
+        } */
 
         .logout {
             position: absolute;
@@ -313,76 +328,130 @@ $conn->close();
         td a:hover {
             background-color: #45a049;
         }
-        .return {
-            color: #000;
-            position: absolute;
-            top: 10%;
-            right: 3.8%;
-            padding: 0 12px;
-            /* điều chỉnh giảm hoặc tăng kích thước nút */
-            text-decoration: none;
-            background-color: #4CAF50;
-            /* màu nền */
-            color: white;
-            /* màu chữ */
-            border-radius: 5px;
-            /* bo góc */
-            transition: background-color 0.3s;
-        }
+        /*  */
 
-        form {
-            position: absolute;
-            top: 11%;
-            z-index: 10;
-            right: 3.8%;
-            display: none;
-            width: 400px;
-            ;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: rgb(255, 211, 58);
-            border-radius: 8px;
-            box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
-        }
+        #submit {
+            width: auto;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #23AD4A;
+    border: 2px solid #23AD4A;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 15px auto;
+    display: block;
+}
 
-        .logo img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
+#submit:hover {
+    background-color: #1C8E3E;
+}
 
-        form .header {
-            text-align: center;
-            font-size: 28px;
-            color: #000;
-        }
+/* Thêm một lớp mới cho ô select để chỉnh sửa kiểu */
+.trangThaiSelect {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-top: 5px;
+}
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+/* Đặt kích thước chữ và màu sắc cho option trong select */
+.trangThaiSelect option {
+    font-size: 14px;
+    color: #000;
+}
+/*  */
 
-        input[type="submit"] {
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: 0.2s;
-        }
 
-        input[type="submit"]:hover {
-            background-color: #002D33;
-        }
+#toast {
+    position: fixed;
+    top: 10px;
+    right: 5px;
+    z-index: 999;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 5px 0;
+    min-width: 400px;
+    max-width: 450px;
+    border-left: 4px solid #47d864;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    transition: all linear 0.5s;
+    margin-bottom: 10px;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(calc(100% + 32px));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+  .toast__icon {
+    font-size: 20px;
+
+
+  }
+
+  .toast--success {
+    border-color: #47d864;
+  }
+  
+  .toast--success .toast__icon {
+    color: #47d864;
+  }
+  
+  .toast--info {
+    border-color: #47d864;
+  }
+  
+  .toast--info .toast__icon {
+    color: #47d864;
+  }
+  
+  .toast__icon,
+  .toast__close {
+    padding: 0 16px;
+  }
+  .toast__body {
+    flex-grow: 1;
+  }
+  .toast__msg {
+    font-size: 14px;
+    color: #888;
+    margin: 10px;
+    line-height: 1.5;
+  }
+
+  .toast__close {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
     </style>
 </head>
-
 <body>
-    <div id="sitebar">
+<div id="notificationBar" class="notification-bar"></div>
+
+
+<div id="sitebar">
         <div class="admin-profile">
             <div class="img"><img src="/../images/mail.png" alt=""></div>
             <p class="name" style="font-weight : 600;">ADMIN</ơ>
@@ -391,8 +460,8 @@ $conn->close();
         </div>
         <div class="list">
             <ul>
-                <li style="background-color: #FFD33A;"><a style="color: #000;" href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
-                <li><a href="./order.php"><i class="fa-solid fa-cart-shopping"></i>Danh Sách Đơn Hàng</a></li>
+                <li ><a  href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
+                <li style="background-color: #FFD33A;"><a style="color: #000;" href="./order.php"><i class="fa-solid fa-cart-shopping"></i>Danh Sách Đơn Hàng</a></li>
                 <li><a href="./booking-table.php"><i class="fa-solid fa-chair"></i>Danh Sách Đặt Bàn</a></li>
                 <li><a href="./gallery_img.php"><i class="fa-solid fa-image"></i>Danh Sách Ảnh</a></li>
                 <li><a href="./user_list.php"><i class="fa-solid fa-user"></i>Danh Sách User</a></li>
@@ -402,71 +471,51 @@ $conn->close();
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
-        <a onclick="OpenFormCreateUser()" href='#' class='return'><i class='fa-solid fa-square-plus'></i>&nbspThêm Món Ăn</a>
-        <form form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <div class="logo"><img src="../images/Logohanquoc.png" alt=""></div>
-            <h1 class="header">Thêm Món</h1>
-            <input type="text" id="name" name="name" required placeholder="Tên Món">
-            <input type="text" id="price" name="price" required placeholder="Giá tiền">
-            <br>
-            <input type="text" id="quantity" name="quantity" required placeholder="Số Lượng">
-            <br>
-            <input type="text" id="url" name="url" required placeholder="URL Ảnh (3X4)">
-            <br>
-            <input type="submit" value="Tạo">
-            <br>
-            <h4 style="color: red;"><?php echo $message; ?></h4>
-        </form>
-        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Món Ăn</h1>
+        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Chi Tiết Đơn Hàng</h1>
         <table>
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Mã món ăn</th>
-                    <th>Hình Ảnh</th>
-                    <th>Tên Món </th>
-                    <th>Giá Tiền</th>
-                    <th>Chỉnh sửa</th>
-                    <th>Xoá sản phẩm</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Hình Ảnh</th>
+                <th>Tên Món</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
                 $stt = 1;
                 foreach ($menuItems as $item) {
+
                     echo "<tr>";
                     echo "<td>{$stt}</td>";
-                    echo "<td>{$item['id']}</td>";
-                    echo "<td><img src=" . $item['productImage'] . "></td>";
-                    echo "<td>{$item['productName']}</td>";
-                    echo "<td>" . number_format($item['productPrice'], 0, ',', '.') . 'đ' . "</td>";
-                    echo "<td>";
-                    echo " <a  style='background-color: #2196F3;' href='update.php?id=" . $item['id'] . "'>Sửa</a> ";
-                    echo "</td>";
-                    echo "<td>";
-                    echo " <a style='background-color:red;' href='delete.php?id=" . $item['id'] . "'>Xóa</a> ";
-                    echo "</td>";
+                    echo "<td><img name='hinhAnh' src=".$item['hinhAnh']."></td>";
+                    echo "<td>{$item['tenMon']}</td>";
+                    echo "<td>" . number_format($item['giaTien'], 0, ',', '.') . 'đ' . "</td>";
+                    echo "<td>{$item['quantity']}</td>";
                     echo "</tr>";
+                  
                     $stt++;
                 }
+
                 ?>
-            </tbody>
-        </table>
+        </tbody>
+      </table>
+    
         <!-- có thể thay đổi nội dung -->
     </div>
     <div class="logout">
         <a href="../../../indexAdmin.php"> <i class="fa-solid fa-house"></i></a>
     </div>
-    <script>
-        function OpenFormCreateUser() {
-            let formCreateUser = document.querySelector('#main-content  form');
-            if (formCreateUser.style.display == "block") {
-                formCreateUser.style.display = "none"
-            } else {
-                formCreateUser.style.display = "block"
-            }
-        }
-    </script>
-</body>
+   
+    
 
+
+   
+       
+
+  
+
+
+</body>
 </html>

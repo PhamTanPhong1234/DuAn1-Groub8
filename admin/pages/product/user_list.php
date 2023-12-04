@@ -369,6 +369,7 @@ $conn->close();
                 <li><a href="./booking-table.php"><i class="fa-solid fa-chair"></i>Danh Sách Đặt Bàn</a></li>
                 <li><a href="./gallery_img.php"><i class="fa-solid fa-image"></i>Danh Sách Ảnh</a></li>
                 <li style="background-color: #FFD33A;"><a style="color: #000;" href="./user_list.php"><i class="fa-solid fa-user"></i>Danh Sách User</a></li>
+                <li><a href="./thongKe.php"><i class="fa-solid fa-bars"></i>Thống Kê</a></li>
              </ul>
         </div>
     </div>
@@ -422,7 +423,7 @@ $conn->close();
         <!-- có thể thay đổi nội dung -->
     </div>
     <div class="logout">
-        <a href="../../../indexAdmin.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
+        <a href="../../../indexAdmin.php"> <i class="fa-solid fa-house"></i></a>
     </div>
     <script>
         function OpenFormCreateUser() {

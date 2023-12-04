@@ -481,7 +481,7 @@ $conn->close();
                     echo "<td>{$stt}</td>";
                     echo "<td><img name='hinhAnh' src=".$item['hinhAnh']."></td>";
                     echo "<td>{$item['tenMon']}</td>";
-                    echo "<td>{$item['giaTien']}đ</td>";
+                    echo "<td>" . number_format($item['giaTien'], 0, ',', '.') . 'đ' . "</td>";
                     echo "<td>{$item['quantity']}</td>";
                     echo "</tr>";
                   

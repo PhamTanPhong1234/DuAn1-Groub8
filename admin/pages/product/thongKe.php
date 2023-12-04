@@ -19,17 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = $conn->query($create_sql);
 }
 // chọn tất cả từ bảng product
-$sql = "SELECT * FROM products";
-$result = $conn->query($sql);
+$topProductsQuery = "SELECT hinhAnh ,tenMon, giaTien , SUM(quantity) as soLuongDat FROM dsMon GROUP BY tenMon ORDER BY soLuongDat DESC;";
+$topProductsResult = $conn->query($topProductsQuery);
 
-// Khởi tạo mảng để lưu trữ dữ liệu
-$menuItems = array();
+// Khởi tạo mảng để lưu trữ dữ liệu của món ăn được đặt nhiều nhất
+$topProducts = array();
 
 // Kiểm tra kết quả truy vấn
-if ($result->num_rows > 0) {
-    //tạo vòng lặp để xuất mảng menuItem
-    while ($row = $result->fetch_assoc()) {
-        $menuItems[] = $row;
+if ($topProductsResult->num_rows > 0) {
+    // Lặp qua kết quả và lưu vào mảng
+    while ($row = $topProductsResult->fetch_assoc()) {
+        $topProducts[] = $row;
     }
 }
 
@@ -391,18 +391,18 @@ $conn->close();
         </div>
         <div class="list">
             <ul>
-                <li style="background-color: #FFD33A;"><a style="color: #000;" href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
+                <li ><a  href="./index.php"><i class="fa-solid fa-list"></i>Danh Sách Món Ăn</a></li>
                 <li><a href="./order.php"><i class="fa-solid fa-cart-shopping"></i>Danh Sách Đơn Hàng</a></li>
                 <li><a href="./booking-table.php"><i class="fa-solid fa-chair"></i>Danh Sách Đặt Bàn</a></li>
                 <li><a href="./gallery_img.php"><i class="fa-solid fa-image"></i>Danh Sách Ảnh</a></li>
                 <li><a href="./user_list.php"><i class="fa-solid fa-user"></i>Danh Sách User</a></li>
-                <li><a href="./thongKe.php"><i class="fa-solid fa-bars"></i>Thống Kê</a></li>
+                <li style="background-color: #FFD33A;"><a style="color: #000;" href="./thongKe.php"><i class="fa-solid fa-bars"></i>Thống Kê</a></li>
             </ul>
         </div>
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
-        <a onclick="OpenFormCreateUser()" href='#' class='return'><i class='fa-solid fa-square-plus'></i>&nbspThêm Món Ăn</a>
+        <!-- <a onclick="OpenFormCreateUser()" href='#' class='return'><i class='fa-solid fa-square-plus'></i>&nbspThêm Món Ăn</a> -->
         <form form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="logo"><img src="../images/Logohanquoc.png" alt=""></div>
             <h1 class="header">Thêm Món</h1>
@@ -417,39 +417,31 @@ $conn->close();
             <br>
             <h4 style="color: red;"><?php echo $message; ?></h4>
         </form>
-        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Danh Sách Món Ăn</h1>
+        <h1 style="width: 100%;text-align: center;padding-top: 30px;">Thống Kê Món Ăn  </h1>
         <table>
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Mã món ăn</th>
                     <th>Hình Ảnh</th>
                     <th>Tên Món </th>
                     <th>Giá Tiền</th>
-                    <th>Chỉnh sửa</th>
-                    <th>Xoá sản phẩm</th>
+                    <th>Số lượng</th>
                 </tr>
             </thead>
             <tbody>
-                <?php
-                $stt = 1;
-                foreach ($menuItems as $item) {
-                    echo "<tr>";
-                    echo "<td>{$stt}</td>";
-                    echo "<td>{$item['id']}</td>";
-                    echo "<td><img src=" . $item['productImage'] . "></td>";
-                    echo "<td>{$item['productName']}</td>";
-                    echo "<td>" . number_format($item['productPrice'], 0, ',', '.') . 'đ' . "</td>";
-                    echo "<td>";
-                    echo " <a  style='background-color: #2196F3;' href='update.php?id=" . $item['id'] . "'>Sửa</a> ";
-                    echo "</td>";
-                    echo "<td>";
-                    echo " <a style='background-color:red;' href='delete.php?id=" . $item['id'] . "'>Xóa</a> ";
-                    echo "</td>";
-                    echo "</tr>";
-                    $stt++;
-                }
-                ?>
+                    <?php
+                    $stt = 1;
+                    foreach ($topProducts as $product) {
+                        echo "<tr>";
+                        echo "<td>{$stt}</td>";
+                        echo "<td><img src=" . $product['hinhAnh'] . "></td>";
+                        echo "<td>{$product['tenMon']}</td>";
+                        echo "<td>" . number_format($product['giaTien'], 0, ',', '.') . 'đ' . "</td>";
+                        echo "<td>{$product['soLuongDat']}</td>";
+                        echo "</tr>";
+                        $stt++;
+                    }
+                    ?>
             </tbody>
         </table>
         <!-- có thể thay đổi nội dung -->

@@ -442,6 +442,7 @@ $conn->close();
                 <li><a href="./booking-table.php"><i class="fa-solid fa-chair"></i>Danh Sách Đặt Bàn</a></li>
                 <li><a href="./gallery_img.php"><i class="fa-solid fa-image"></i>Danh Sách Ảnh</a></li>
                 <li><a href="./user_list.php"><i class="fa-solid fa-user"></i>Danh Sách User</a></li>
+                <li><a href="./thongKe.php"><i class="fa-solid fa-bars"></i>Thống Kê</a></li>
             </ul>
         </div>
     </div>
@@ -457,9 +458,10 @@ $conn->close();
                     <th>ID Đơn Hàng</th>
                     <th>Tên Khách Hàng</th>
                     <th>Địa Chỉ</th>
+                    <th>Mã Đơn Hàng</th>
                     <th>Danh Sách Món</th>
                     <th>Tổng Tiền</th>
-                    <th>Trạng Tái Đơn Hàng</th>
+                    <th>Trạng Thái Đơn Hàng</th>
                 </tr>
             </thead>
             <tbody>
@@ -472,7 +474,8 @@ $conn->close();
                     echo "<td>{$item['tenKH']}</td>";
                     echo "<td>{$item['Dchi']}</td>";
                     echo "<td>{$item['maDsmon']}</td>";
-                    echo "<td>{$item['tongTien']}</td>";
+                    echo "<td> <a class='view-detail' data-maDsmon='{$item['maDsmon']}' href='viewOrder.php?maDsmon={$item['maDsmon']}'>Xem Chi Tiết</a> </td>";
+                    echo "<td>" . number_format($item['tongTien'], 0, ',', '.') . 'đ' . "</td>";
                     echo "<td><select name='trangThai[]' class='trangThaiSelect'>";
                     echo "<option value='0' " . ($item['trangThai'] == 0 ? 'selected' : '') . ">Đang chuẩn bị</option>";
                     echo "<option value='1' " . ($item['trangThai'] == 1 ? 'selected' : '') . ">Đã xong</option>";
@@ -489,7 +492,7 @@ $conn->close();
         <!-- có thể thay đổi nội dung -->
     </div>
     <div class="logout">
-        <a href="../../../indexAdmin.php"> <i class="fa-solid fa-right-from-bracket"></i></a>
+        <a href="../../../indexAdmin.php"> <i class="fa-solid fa-house"></i></a>
     </div>
     <script>
 $(document).ready(function () {
@@ -610,6 +613,25 @@ $(document).ready(function () {
     }
   }
     </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var viewDetailLinks = document.querySelectorAll('.view-detail');
+
+        viewDetailLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                // Ngăn chặn hành động mặc định của nút
+                event.preventDefault();
+
+                // Lấy mã sản phẩm từ thuộc tính data-maDsmon
+                var maDsmon = link.getAttribute('data-maDsmon');
+
+                // Chuyển hướng đến trang view_detail.php với mã sản phẩm qua URL
+                window.location.href = 'viewOrder.php?maDsmon=' + maDsmon;
+            });
+        });
+    });
+</script>
 
 </body>
 

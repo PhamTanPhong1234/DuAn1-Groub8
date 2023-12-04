@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $customerName = $_POST["customerName"];
 
     // Chèn dữ liệu vào bảng orders
-    $insertOrderSql = "INSERT INTO donOnline (tenKH, Dchi, maDsmon, tongTien) VALUES ('$customerName', '$address', '$orderCode', '$totalAmount')";
+    $insertOrderSql = "INSERT INTO donOnline (tenKH, Dchi, maDsmon, tongTien ,trangThai) VALUES ('$customerName', '$address', '$orderCode', '$totalAmount','0')";
 
     if ($conn->query($insertOrderSql) === TRUE) {
         echo "Dữ liệu được chèn thành công vào database.";

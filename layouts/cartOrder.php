@@ -460,7 +460,7 @@ $conn->close();
                             echo "<td>{$item['tenKH']}</td>";
                             echo "<td>{$item['Dchi']}</td>";
                             echo "<td> <a class='view-detail' data-maDsmon='{$item['maDsmon']}' href='view_detail.php?maDsmon={$item['maDsmon']}'>Xem Chi Tiết</a> </td>";
-                            echo "<td>{$item['tongTien']}</td>";
+                            echo "<td>" . number_format($item['tongTien'], 0, ',', '.') . 'đ' . "</td>";
                             echo "<td>";
 
                             if ($item['trangThai'] == 1) {

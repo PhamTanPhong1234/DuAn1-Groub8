@@ -1343,4 +1343,9 @@ ul.tabs li.current span{
   right:15px;
   color:white;
   cursor: pointer;
+  z-index: 10000;
+}
+
+.logoutUser a {
+  color:white;
 }
