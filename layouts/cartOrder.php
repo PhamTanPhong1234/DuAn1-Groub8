@@ -401,14 +401,11 @@ $conn->close();
 
         .logout {
             position: absolute;
-            top: 0;
+            top: -21px;
             right: 0;
-            width: 30px;
             height: 30px;
-            background-color: rebeccapurple;
             text-align: center;
             cursor: pointer;
-            background-color: #FFD33A;
         }
 
         .logout a {

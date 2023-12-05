@@ -276,7 +276,7 @@ button:hover {
                 echo '<div class="product-info">';
                 echo '<h2>' . $item['productName'] . '</h2>';
                 echo '<h2 style="display:none;">' . $item['id'] . '</h2>';
-                echo '<p>Mô tả món ăn và thông tin khác...</p>';
+                // echo '<p>Mô tả món ăn và thông tin khác...</p>';
                 echo '<p>Giá: ' . $item['productPrice'] . ' VNĐ</p>';
 
 

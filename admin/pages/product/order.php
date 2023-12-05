@@ -300,6 +300,7 @@ $conn->close();
             text-decoration: none;
             border-radius: 10px;
             transition: background-color 0.3s;
+            font-size: 9px;
         }
 
         td a:hover {

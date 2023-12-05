@@ -20,15 +20,16 @@ $stmt->bind_param("ssdss", $hinhAnh, $tenMon, $giaTien, $quantity, $maDh);
 // Kiểm tra và thực hiện truy vấn khi nhận được POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $menuItem = isset($_POST['menuItem']) ? json_decode($_POST['menuItem'], true) : [];
+    $quantities = $_POST['quantity'];
 
     if (!empty($menuItem)) {
         // Thực hiện các bước xử lý với mỗi mục trong mảng $quantityArray
-        foreach ($menuItem as $item) {
+        foreach ($menuItem as $index => $item) {
             // Đảm bảo rằng dữ liệu đầu vào được kiểm tra và là an toàn
             $hinhAnh = htmlspecialchars($item['hinhAnh']);
             $tenMon = htmlspecialchars($item['tenMon']);
             $giaTien = floatval($item['giaTien']); // Chuyển đổi giá tiền thành số
-            $quantity = 1; // Chuyển đổi số lượng thành số nguyên
+            $quantity = intval($quantities[$index]); // Lấy giá trị số lượng từ mảng $quantities
             $maDh = ($_POST['maDonHang']);
 
             // Bảo mật với SQL Injection
