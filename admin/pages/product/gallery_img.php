@@ -348,7 +348,7 @@ $conn->close();
 <body>
     <div id="sitebar">
         <div class="admin-profile">
-            <div class="img"><img src="/../images/mail.png" alt=""></div>
+            <div class="img"><img src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt=""></div>
             <p class="name" style="font-weight : 600;">ADMIN</ơ>
                 <br>
             <p style="font-size : 10px;">Chào Mừng Quay Trở Lại</p>

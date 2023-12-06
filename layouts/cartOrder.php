@@ -456,14 +456,15 @@ $conn->close();
                             echo "<td>{$item['maDsmon']}</td>";
                             echo "<td>{$item['tenKH']}</td>";
                             echo "<td>{$item['Dchi']}</td>";
-                            echo "<td> <a class='view-detail' data-maDsmon='{$item['maDsmon']}' href='view_detail.php?maDsmon={$item['maDsmon']}'>Xem Chi Tiết</a> </td>";
+                            echo "<td> <a style=' line-height: 18px;' class='view-detail' data-maDsmon='{$item['maDsmon']}' href='view_detail.php?maDsmon={$item['maDsmon']}'>Xem Chi Tiết</a> </td>";
                             echo "<td>" . number_format($item['tongTien'], 0, ',', '.') . 'đ' . "</td>";
                             echo "<td>";
-
                             if ($item['trangThai'] == 1) {
-                                echo "Xong";
+                                echo "<span style='color:blue;     font-size: 15px;
+                                '>Xong</span>";
                             } else {
-                                echo "<span style='color:red;'>Đang chuẩn bị</span>";
+                                echo "<span style='color:red;     font-size: 15px;
+                                '>Đang chuẩn bị</span>";
                             }
                         
                             echo "</td>";
