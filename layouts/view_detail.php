@@ -461,7 +461,7 @@ $conn->close();
     </div>
     <div id="main-content">
         <!-- có thể thay đổi nội dung -->
-    
+        <h1 style=" font-weight: bold; width: 100%;text-align: center;padding-top: 30px;">Theo Dõi Đơn Hàng</h1>
         <table>
         <thead>
             <tr>
